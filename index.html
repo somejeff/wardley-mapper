@@ -33,7 +33,6 @@
     flex-direction: column;
   }
 
-  /* ── Header ── */
   header {
     padding: 9px 16px;
     border-bottom: 1px solid var(--border);
@@ -44,41 +43,16 @@
     flex-shrink: 0;
     box-shadow: 0 1px 0 var(--border2);
   }
-  header h1 {
-    font-size: 13px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--text);
-  }
-  .badge {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    background: var(--bg); border: 1px solid var(--border);
-    color: var(--text-muted); padding: 2px 7px; border-radius: 4px;
-  }
+  header h1 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+  .badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; background: var(--bg); border: 1px solid var(--border); color: var(--text-muted); padding: 2px 7px; border-radius: 4px; }
   .header-actions { margin-left: auto; display: flex; gap: 7px; align-items: center; }
-  .btn {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
-    letter-spacing: 0.07em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 5px; cursor: pointer;
-    border: 1px solid var(--border); background: var(--surface); color: var(--text-muted);
-    transition: all 0.13s; display: flex; align-items: center; gap: 5px;
-  }
+  .btn { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 10px; border-radius: 5px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); transition: all 0.13s; display: flex; align-items: center; gap: 5px; }
   .btn:hover { background: var(--bg); color: var(--text); border-color: var(--blue); }
 
-  /* ── Layout ── */
   #layout { flex: 1; display: flex; overflow: hidden; }
 
-  /* ── Left toolbar ── */
-  #toolbar {
-    width: 44px; border-right: 1px solid var(--border); background: var(--surface);
-    display: flex; flex-direction: column; align-items: center;
-    padding: 10px 0; gap: 3px; flex-shrink: 0;
-  }
-  .tool-btn {
-    width: 32px; height: 32px; border-radius: 6px;
-    border: 1px solid transparent; background: transparent;
-    color: var(--text-dim); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.12s; position: relative;
-  }
+  #toolbar { width: 44px; border-right: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 3px; flex-shrink: 0; }
+  .tool-btn { width: 32px; height: 32px; border-radius: 6px; border: 1px solid transparent; background: transparent; color: var(--text-dim); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.12s; position: relative; }
   .tool-btn:hover { background: var(--bg); color: var(--text); }
   .tool-btn.active        { background: #ddf4ff; border-color: #9cd4f5; color: var(--blue); }
   .tool-btn.active.amber  { background: #fff8c5; border-color: #e8cc6e; color: var(--amber); }
@@ -86,50 +60,25 @@
   .tool-btn.active.purple { background: #fbefff; border-color: #d8b9f8; color: var(--purple); }
   .tool-btn.active.green  { background: #dafbe1; border-color: #82e09c; color: var(--green); }
   .tool-sep { width: 20px; height: 1px; background: var(--border2); margin: 3px 0; }
-  .tool-btn[data-tip]::after {
-    content: attr(data-tip);
-    position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
-    background: var(--text); color: var(--surface);
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    white-space: nowrap; padding: 4px 8px; border-radius: 4px;
-    pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 200;
-  }
+  .tool-btn[data-tip]::after { content: attr(data-tip); position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); background: var(--text); color: var(--surface); font-family: 'JetBrains Mono', monospace; font-size: 10px; white-space: nowrap; padding: 4px 8px; border-radius: 4px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 200; }
   .tool-btn[data-tip]:hover::after { opacity: 1; }
 
-  /* ── Map ── */
   #map-container { flex: 1; position: relative; overflow: auto; background: var(--bg); }
   svg { cursor: default; display: block; }
-  svg.mode-add        { cursor: crosshair; }
-  svg.mode-link       { cursor: cell; }
-  svg.mode-delete     { cursor: not-allowed; }
-  svg.mode-shift      { cursor: crosshair; }
-  svg.mode-annotate   { cursor: text; }
+  svg.mode-add      { cursor: crosshair; }
+  svg.mode-link     { cursor: cell; }
+  svg.mode-delete   { cursor: not-allowed; }
+  svg.mode-shift    { cursor: crosshair; }
+  svg.mode-annotate { cursor: text; }
 
-  /* ── Right panel ── */
-  #side-panel {
-    width: 210px; border-left: 1px solid var(--border); background: var(--surface);
-    display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden;
-  }
+  #side-panel { width: 210px; border-left: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden; }
   .panel-section { border-bottom: 1px solid var(--border2); padding: 10px 12px; }
-  .panel-title {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-dim); margin-bottom: 8px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .panel-title button {
-    background: none; border: 1px solid var(--border); color: var(--text-muted);
-    border-radius: 3px; cursor: pointer; font-size: 13px;
-    line-height: 1; padding: 0 4px 1px; transition: color 0.12s, border-color 0.12s;
-  }
+  .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
+  .panel-title button { background: none; border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px; cursor: pointer; font-size: 13px; line-height: 1; padding: 0 4px 1px; transition: color 0.12s, border-color 0.12s; }
   .panel-title button:hover { color: var(--green); border-color: var(--green); }
 
   #groups-list { display: flex; flex-direction: column; gap: 3px; }
-  .group-item {
-    display: flex; align-items: center; gap: 6px;
-    padding: 5px 6px; border-radius: 5px;
-    border: 1px solid transparent; cursor: pointer; transition: background 0.12s;
-  }
+  .group-item { display: flex; align-items: center; gap: 6px; padding: 5px 6px; border-radius: 5px; border: 1px solid transparent; cursor: pointer; transition: background 0.12s; }
   .group-item:hover { background: var(--bg); }
   .group-swatch { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; border: 2px solid currentColor; }
   .group-name { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -149,31 +98,18 @@
   #node-info { flex: 1; overflow-y: auto; }
   .info-row { display: flex; flex-direction: column; gap: 3px; margin-bottom: 8px; }
   .info-row label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
-  .info-row input, .info-row select, .info-row textarea {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
-    color: var(--text); font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; padding: 4px 7px; outline: none; width: 100%;
-    transition: border-color 0.15s;
-  }
+  .info-row input, .info-row select, .info-row textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 7px; outline: none; width: 100%; transition: border-color 0.15s; }
   .info-row textarea { resize: vertical; min-height: 56px; font-size: 10px; line-height: 1.5; }
   .info-row input:focus, .info-row select:focus, .info-row textarea:focus { border-color: var(--blue); }
   .info-row select option { background: var(--surface); }
 
   .membership-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
-  .membership-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
-    padding: 2px 6px; border-radius: 3px; border: 1px solid;
-    cursor: pointer; transition: opacity 0.12s;
-    display: flex; align-items: center; gap: 3px; opacity: 0.45;
-  }
+  .membership-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 2px 6px; border-radius: 3px; border: 1px solid; cursor: pointer; transition: opacity 0.12s; display: flex; align-items: center; gap: 3px; opacity: 0.45; }
   .membership-tag.active { opacity: 1; }
   .membership-tag:hover  { opacity: 0.75; }
 
-  /* ── SVG elements ── */
   .axis-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #c4c8cd; letter-spacing: 0.08em; text-transform: uppercase; }
   .axis-line { stroke: #e1e6ea; stroke-width: 1; }
-
-  /* Zones */
   .zone-band { pointer-events: none; }
   .zone-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; fill: #c4c8cd; pointer-events: none; user-select: none; }
   .divider-line { stroke: #dde1e6; stroke-width: 1; stroke-dasharray: 4 4; pointer-events: none; }
@@ -183,7 +119,6 @@
   .divider-handle.dragging rect { fill: #ddf4ff; stroke: var(--blue); }
   .divider-handle line { stroke: #8c959f; stroke-width: 1; pointer-events: none; }
 
-  /* Links */
   .link-hit { stroke: transparent; stroke-width: 10; fill: none; cursor: pointer; }
   .link-hit:hover + .link { stroke: #8c959f; }
   .link { stroke: #c4c8cd; stroke-width: 1.5; fill: none; pointer-events: none; transition: stroke 0.15s; }
@@ -191,8 +126,7 @@
   #link-ghost.active { opacity: 1; }
   .link-source-ring { fill: none; stroke: var(--amber); stroke-width: 1.5; stroke-dasharray: 3 2; pointer-events: none; display: none; }
 
-  /* Nodes */
-  .node-bg { fill: white; stroke: none; pointer-events: none; } /* occludes links behind node */
+  .node-bg { fill: white; stroke: none; pointer-events: none; }
   .node-circle { stroke-width: 2; cursor: grab; transition: filter 0.15s; }
   .node-circle:active { cursor: grabbing; }
   .mode-delete .node-circle, .mode-link .node-circle { cursor: pointer; }
@@ -201,19 +135,16 @@
   .node-label { font-family: 'Syne', sans-serif; font-size: 12px; fill: #1f2328; pointer-events: none; user-select: none; font-weight: 600; }
   .node-desc  { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; fill: #57606a; pointer-events: none; user-select: none; }
 
-  /* Cluster nodes */
   .cluster-circle { stroke-width: 2; }
   .cluster-hit    { fill: transparent; stroke: none; cursor: grab; }
   .cluster-hit:active { cursor: grabbing; }
   .mode-delete .cluster-hit, .mode-link .cluster-hit { cursor: pointer; }
 
-  /* Group label drag */
   .group-label { cursor: grab; }
   .group-label:active { cursor: grabbing; }
   .group-label-pin { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
   .blob-group:hover .group-label-pin { opacity: 0.5; }
 
-  /* Shift arrows */
   .shift-arrow-path { fill: none; pointer-events: visibleStroke; cursor: pointer; transition: opacity 0.15s; }
   .shift-arrow-path:hover { opacity: 0.7; }
   .shift-label { font-family: 'Syne', sans-serif; font-size: 11px; font-style: italic; pointer-events: none; user-select: none; }
@@ -225,7 +156,6 @@
   .shift-group:hover .shift-ctrl-handle { opacity: 1; }
   .shift-ctrl-handle circle { fill: white; stroke: #8c959f; stroke-width: 1.5; }
 
-  /* Zone color+name grid */
   .zone-color-grid { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
   .zone-color-item { display: flex; align-items: center; gap: 5px; }
   .zone-color-item input[type=color] { width:22px; height:22px; flex-shrink:0; border:1px solid var(--border); border-radius:4px; padding:0; cursor:pointer; background:none; }
@@ -239,41 +169,18 @@
   .annotation-group.sel .annotation-bg { stroke: var(--blue); stroke-width: 1.5; }
   .mode-delete .annotation-group { cursor: pointer; }
 
-  /* Floating input overlay */
-  #node-input-overlay {
-    position: absolute; display: none; flex-direction: column; gap: 6px;
-    background: var(--surface); border: 1px solid var(--blue);
-    border-radius: 7px; padding: 10px 12px; z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12); min-width: 175px;
-  }
+  #node-input-overlay { position: absolute; display: none; flex-direction: column; gap: 6px; background: var(--surface); border: 1px solid var(--blue); border-radius: 7px; padding: 10px 12px; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.12); min-width: 175px; }
   #node-input-overlay.visible { display: flex; }
-  #node-input-overlay input,
-  #node-input-overlay select {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 4px; color: var(--text);
-    font-family: 'Syne', sans-serif; font-size: 12px;
-    padding: 5px 8px; outline: none; width: 100%;
-  }
+  #node-input-overlay input, #node-input-overlay select { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-family: 'Syne', sans-serif; font-size: 12px; padding: 5px 8px; outline: none; width: 100%; }
   #node-input-overlay input:focus { border-color: var(--blue); }
   .overlay-hint { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); text-align: center; }
   .overlay-btns { display: flex; gap: 6px; }
-  .overlay-btns button {
-    flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    padding: 4px; border-radius: 4px; cursor: pointer;
-    border: 1px solid var(--border); background: var(--surface); color: var(--text-muted);
-    transition: all 0.12s;
-  }
+  .overlay-btns button { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px; border-radius: 4px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); transition: all 0.12s; }
   .overlay-btns .confirm { border-color: var(--blue); color: var(--blue); }
   .overlay-btns .confirm:hover { background: #ddf4ff; }
   .overlay-btns .cancel:hover  { color: var(--red); border-color: var(--red); background: #ffebe9; }
 
-  /* Context menu */
-  #ctx-menu {
-    position: fixed; display: none;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 7px; padding: 4px; z-index: 300;
-    min-width: 155px; box-shadow: 0 6px 24px rgba(0,0,0,0.14);
-  }
+  #ctx-menu { position: fixed; display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 4px; z-index: 300; min-width: 155px; box-shadow: 0 6px 24px rgba(0,0,0,0.14); }
   #ctx-menu.visible { display: block; }
   .ctx-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); padding: 4px 10px 2px; text-transform: uppercase; letter-spacing: 0.08em; }
   .ctx-item  { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text); padding: 6px 10px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.1s; }
@@ -282,50 +189,25 @@
   .ctx-item.danger:hover { background: #ffebe9; }
   .ctx-sep { height: 1px; background: var(--border2); margin: 3px 0; }
 
-  /* Group / Shift dialog */
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.18);
-    display: none; align-items: center; justify-content: center; z-index: 400;
-  }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.18); display: none; align-items: center; justify-content: center; z-index: 400; }
   .modal-overlay.visible { display: flex; }
-  .dialog-box {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 20px; width: 280px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  }
+  .dialog-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
   .dialog-box h3 { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
   .dialog-field { margin-bottom: 10px; }
   .dialog-field label { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); display: block; margin-bottom: 4px; }
-  .dialog-field input[type=text], .dialog-field select {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 5px;
-    color: var(--text); font-family: 'Syne', sans-serif; font-size: 13px;
-    padding: 6px 10px; outline: none; width: 100%; transition: border-color 0.15s;
-  }
+  .dialog-field input[type=text], .dialog-field select { background: var(--bg); border: 1px solid var(--border); border-radius: 5px; color: var(--text); font-family: 'Syne', sans-serif; font-size: 13px; padding: 6px 10px; outline: none; width: 100%; transition: border-color 0.15s; }
   .dialog-field input[type=text]:focus, .dialog-field select:focus { border-color: var(--blue); }
   .color-swatches { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
   .color-swatch { width: 20px; height: 20px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.12s, transform 0.1s; }
   .color-swatch:hover { transform: scale(1.15); }
   .color-swatch.selected { border-color: #1f2328; }
   .dialog-btns { display: flex; gap: 8px; margin-top: 16px; }
-  .dialog-btns button {
-    flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.07em; padding: 7px; border-radius: 5px;
-    cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted);
-    transition: all 0.12s;
-  }
+  .dialog-btns button { flex: 1; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 7px; border-radius: 5px; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); transition: all 0.12s; }
   .dialog-btns .primary { border-color: var(--blue); color: var(--blue); }
   .dialog-btns .primary:hover { background: #ddf4ff; }
   .dialog-btns .cancel:hover  { color: var(--red); border-color: var(--red); }
 
-  /* Toast */
-  #toast {
-    position: fixed; bottom: 20px; left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background: var(--text); color: var(--surface);
-    border-radius: 6px; padding: 7px 14px;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 500;
-  }
+  #toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(10px); background: var(--text); color: var(--surface); border-radius: 6px; padding: 7px 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 500; }
   #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   #toast.success { background: var(--green); }
   #toast.error   { background: var(--red); }
@@ -355,32 +237,29 @@
 </header>
 
 <div id="layout">
-
-  <!-- Toolbar -->
   <div id="toolbar">
-    <button class="tool-btn active"  id="tool-select"   data-tip="Select  (S)">
+    <button class="tool-btn active" id="tool-select"   data-tip="Select  (S)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .557.103z"/></svg>
     </button>
     <div class="tool-sep"></div>
-    <button class="tool-btn"         id="tool-add"      data-tip="Add Node  (A)">
+    <button class="tool-btn"        id="tool-add"      data-tip="Add Node  (A)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2z"/></svg>
     </button>
-    <button class="tool-btn amber"   id="tool-link"     data-tip="Link Nodes  (L)">
+    <button class="tool-btn amber"  id="tool-link"     data-tip="Link Nodes  (L)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 9H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/><path d="M9 5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 7h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/></svg>
     </button>
-    <button class="tool-btn purple"  id="tool-shift"    data-tip="Shift Arrow  (H)">
+    <button class="tool-btn purple" id="tool-shift"    data-tip="Shift Arrow  (H)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
     </button>
-    <button class="tool-btn green"   id="tool-annotate" data-tip="Annotation  (N)">
+    <button class="tool-btn green"  id="tool-annotate" data-tip="Annotation  (N)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-6.5-6.5-.353-.354-.353.354-6.5 6.5A.5.5 0 0 1 0 14.793V2zm8.854 3.646a.5.5 0 0 0-.708 0L8 7.793 5.854 5.646a.5.5 0 1 0-.708.708L7.293 8.5l-2.147 2.146a.5.5 0 0 0 .708.708L8 9.207l2.146 2.147a.5.5 0 0 0 .708-.708L8.707 8.5l2.147-2.146a.5.5 0 0 0 0-.708z"/></svg>
     </button>
     <div class="tool-sep"></div>
-    <button class="tool-btn red"     id="tool-delete"   data-tip="Delete  (Del)">
+    <button class="tool-btn red"    id="tool-delete"   data-tip="Delete  (Del)">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
     </button>
   </div>
 
-  <!-- Map SVG -->
   <div id="map-container">
     <svg id="map">
       <defs>
@@ -390,10 +269,8 @@
         <marker id="arrow-ghost" viewBox="0 -4 8 8" refX="16" refY="0" markerWidth="6" markerHeight="6" orient="auto">
           <path d="M0,-4L8,0L0,4" fill="#9a6700"/>
         </marker>
-        <!-- Shift arrow markers – several sizes/colors defined dynamically below -->
       </defs>
     </svg>
-    <!-- Node add overlay -->
     <div id="node-input-overlay">
       <input type="text" id="node-name-input" placeholder="Node label…" autocomplete="off" />
       <select id="node-role-select">
@@ -411,7 +288,6 @@
     </div>
   </div>
 
-  <!-- Right panel -->
   <div id="side-panel">
     <div class="panel-section">
       <div class="panel-title">Groups <button id="btnNewGroup">+</button></div>
@@ -419,21 +295,9 @@
     </div>
     <div class="panel-section">
       <div class="panel-title">Canvas</div>
-      <div class="control-row">
-        <label>Width</label>
-        <input type="range" id="mapWSlider" min="600" max="2400" step="50" value="1000"/>
-        <span id="mapWVal">1000</span>
-      </div>
-      <div class="control-row">
-        <label>Height</label>
-        <input type="range" id="mapHSlider" min="400" max="1600" step="50" value="700"/>
-        <span id="mapHVal">700</span>
-      </div>
-      <div class="control-row">
-        <label>Top Pad</label>
-        <input type="range" id="topPadSlider" min="0" max="220" value="80"/>
-        <span id="topPadVal">80</span>
-      </div>
+      <div class="control-row"><label>Width</label><input type="range" id="mapWSlider" min="600" max="2400" step="50" value="1000"/><span id="mapWVal">1000</span></div>
+      <div class="control-row"><label>Height</label><input type="range" id="mapHSlider" min="400" max="1600" step="50" value="700"/><span id="mapHVal">700</span></div>
+      <div class="control-row"><label>Top Pad</label><input type="range" id="topPadSlider" min="0" max="220" value="80"/><span id="topPadVal">80</span></div>
       <div style="margin-top:8px">
         <div class="panel-title" style="margin-bottom:4px">Zone Colors &amp; Names</div>
         <div class="zone-color-grid" id="zone-color-grid"></div>
@@ -467,21 +331,19 @@
   </div>
 </div>
 
-<!-- Context menu -->
 <div id="ctx-menu">
   <div class="ctx-label" id="ctx-title">Item</div>
   <div class="ctx-item" id="ctx-rename"><svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>Rename</div>
   <div class="ctx-sep" id="ctx-node-sep"></div>
   <div class="ctx-item danger" id="ctx-delete-node"><svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>Delete</div>
-  <div class="ctx-item danger" id="ctx-delete-link"  style="display:none"><svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>Delete Link</div>
+  <div class="ctx-item danger" id="ctx-delete-link" style="display:none"><svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>Delete Link</div>
 </div>
 
-<!-- Group dialog -->
 <div id="group-dialog" class="modal-overlay">
   <div class="dialog-box">
     <h3 id="dialog-title">New Group</h3>
     <div class="dialog-field"><label>Name</label><input type="text" id="group-name-input" placeholder="Group name…" autocomplete="off"/></div>
-    <div class="dialog-field"><label>Description <span style="font-weight:400;opacity:0.6">(optional)</span></label><textarea id="group-desc-input" placeholder="e.g. External-facing systems on the public cloud…" style="background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--text);font-family:'Syne',sans-serif;font-size:12px;padding:6px 10px;outline:none;width:100%;resize:vertical;min-height:52px;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
+    <div class="dialog-field"><label>Description <span style="font-weight:400;opacity:0.6">(optional)</span></label><textarea id="group-desc-input" placeholder="e.g. External-facing systems…" style="background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--text);font-family:'Syne',sans-serif;font-size:12px;padding:6px 10px;outline:none;width:100%;resize:vertical;min-height:52px;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
     <div class="dialog-field"><label>Color</label><div class="color-swatches" id="color-swatches"></div></div>
     <div class="dialog-btns">
       <button class="cancel"  id="dialogCancel">Cancel</button>
@@ -490,7 +352,6 @@
   </div>
 </div>
 
-<!-- Shift arrow dialog -->
 <div id="shift-dialog" class="modal-overlay">
   <div class="dialog-box">
     <h3>New Shift Arrow</h3>
@@ -507,34 +368,22 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script>
-// ═══════════════════════════════════════════════════════════════════════════════
-// Constants & palette
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Constants ────────────────────────────────────────────────────────────────
 const NODE_R = 7, LABEL_OFFSET = 12, LABEL_HEIGHT = 13;
 const DESC_LINE_HEIGHT = 13, DESC_FONT = 9.5, DESC_MAX_W = 140;
+const GROUP_COLORS = ['#0969da','#1a7f37','#9a6700','#cf222e','#8250df','#067a6f','#e16f24','#0550ae'];
+const SHIFT_COLORS = ['#8250df','#0969da','#1a7f37','#9a6700','#cf222e','#e16f24'];
+const roleColor = { anchor:'#1f2328', frontend:'#0969da', backend:'#1a7f37', custom:'#8250df', cluster:'#9a6700' };
 
-const GROUP_COLORS  = ['#0969da','#1a7f37','#9a6700','#cf222e','#8250df','#067a6f','#e16f24','#0550ae'];
-const SHIFT_COLORS  = ['#8250df','#0969da','#1a7f37','#9a6700','#cf222e','#e16f24'];
-
-const roleColor = {
-  anchor:   '#1f2328',
-  frontend: '#0969da',
-  backend:  '#1a7f37',
-  custom:   '#8250df',
-  cluster:  '#9a6700',
-};
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Mutable data
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Data ─────────────────────────────────────────────────────────────────────
 let nodes = [
-  { id:'customer',     label:'Customer',     desc:'',                             x:200, y:120, role:'anchor'   },
-  { id:'employee',     label:'Employee',     desc:'',                             x:420, y:120, role:'anchor'   },
-  { id:'website',      label:'Website',      desc:'Public-facing web app',        x:160, y:260, role:'frontend' },
-  { id:'admin',        label:'Admin Site',   desc:'Internal management portal',   x:380, y:300, role:'frontend' },
-  { id:'redis',        label:'Redis',        desc:'Session & cache store',         x:270, y:350, role:'frontend' },
-  { id:'microservice', label:'Microservice', desc:'Core business logic layer',    x:230, y:470, role:'backend'  },
-  { id:'database',     label:'Database',     desc:'Persistent data store',        x:430, y:500, role:'backend'  },
+  { id:'customer',     label:'Customer',     desc:'',                          x:200, y:120, role:'anchor'   },
+  { id:'employee',     label:'Employee',     desc:'',                          x:420, y:120, role:'anchor'   },
+  { id:'website',      label:'Website',      desc:'Public-facing web app',     x:160, y:260, role:'frontend' },
+  { id:'admin',        label:'Admin Site',   desc:'Internal management portal',x:380, y:300, role:'frontend' },
+  { id:'redis',        label:'Redis',        desc:'Session & cache store',      x:270, y:350, role:'frontend' },
+  { id:'microservice', label:'Microservice', desc:'Core business logic layer', x:230, y:470, role:'backend'  },
+  { id:'database',     label:'Database',     desc:'Persistent data store',     x:430, y:500, role:'backend'  },
 ];
 let links = [
   { source:'customer',target:'website' }, { source:'employee',target:'admin' },
@@ -542,1083 +391,53 @@ let links = [
   { source:'microservice',target:'redis' }, { source:'microservice',target:'database' },
 ];
 let groups = [
-  { id:'frontend', label:'FRONTEND', desc:'External facing systems on the public cloud', color:'#0969da', nodeIds:['website','admin','redis'],      labelPosX:null, labelPosY:null },
-  { id:'backend',  label:'BACKEND',  desc:'Internal services and data layer',            color:'#1a7f37', nodeIds:['microservice','database'],       labelPosX:null, labelPosY:null },
+  { id:'frontend', label:'FRONTEND', desc:'External facing systems on the public cloud', color:'#0969da', nodeIds:['website','admin','redis'],    labelPosX:null, labelPosY:null },
+  { id:'backend',  label:'BACKEND',  desc:'Internal services and data layer',            color:'#1a7f37', nodeIds:['microservice','database'],     labelPosX:null, labelPosY:null },
 ];
-// shift arrows: { id, x1,y1, x2,y2, cx,cy (control point), label, color }
 let shifts = [];
-// annotations: { id, x, y, text }
 let annotations = [];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// State
-// ═══════════════════════════════════════════════════════════════════════════════
-let mode = 'select';
-let linkSource = null;
-let selectedId = null;   // node id, annotation id, or shift id
-let selectedType = null; // 'node' | 'annotation' | 'shift'
-let ctxTarget = null;
-let editingGroupId = null;
-let selectedDialogColor = GROUP_COLORS[0];
-let selectedShiftColor  = SHIFT_COLORS[0];
-let _pendingX = 0, _pendingY = 0;
-let _nextId = 100;
+// ─── State ────────────────────────────────────────────────────────────────────
+let mode = 'select', linkSource = null;
+let selectedId = null, selectedType = null;
+let ctxTarget = null, editingGroupId = null;
+let selectedDialogColor = GROUP_COLORS[0], selectedShiftColor = SHIFT_COLORS[0];
+let _pendingX = 0, _pendingY = 0, _nextId = 100;
+let _shiftDrawing = false, _shiftPending = null;
+let _userSetSize = false;
 function genId(p='n') { return `${p}_${_nextId++}`; }
 
-// Shift drawing state
-let _shiftDrawing = false;
-let _shiftPending = null; // { label, color } after dialog confirm
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// D3 / SVG setup
-// ═══════════════════════════════════════════════════════════════════════════════
-const svgEl  = document.getElementById('map');
-const svg    = d3.select('#map');
-const mcEl   = document.getElementById('map-container');
-
-// Explicit map dimensions (separate from browser window size)
-let W = Math.max(mcEl.clientWidth,  1000);
+// ─── SVG setup ────────────────────────────────────────────────────────────────
+const svgEl = document.getElementById('map');
+const svg   = d3.select('#map');
+const mcEl  = document.getElementById('map-container');
+let W = Math.max(mcEl.clientWidth, 1000);
 let H = Math.max(mcEl.clientHeight, 700);
 
 function applySvgSize() {
   svg.attr('width', W).attr('height', H);
-  // Sync sliders to actual W/H on first load
-  const ws = document.getElementById('mapWSlider');
-  const hs = document.getElementById('mapHSlider');
+  const ws = document.getElementById('mapWSlider'), hs = document.getElementById('mapHSlider');
   if (ws) { ws.value = W; document.getElementById('mapWVal').textContent = W; }
   if (hs) { hs.value = H; document.getElementById('mapHVal').textContent = H; }
 }
 applySvgSize();
 
-const axisG       = svg.append('g').attr('class','axes');
-const divLayer    = svg.append('g').attr('class','dividers');
-const shiftLayer  = svg.append('g').attr('class','shifts');
-const blobLayer   = svg.append('g').attr('class','blobs');
-const linkLayer   = svg.append('g').attr('class','links');
-const annoLayer   = svg.append('g').attr('class','annotations');
-const nodeLayer   = svg.append('g').attr('class','nodes');
-
-const ghostLine = svg.append('line').attr('id','link-ghost').attr('marker-end','url(#arrow-ghost)');
-const srcRing   = svg.append('circle').attr('class','link-source-ring').attr('r',13);
-
-// Shift draw ghost
+const axisG      = svg.append('g').attr('class','axes');
+const divLayer   = svg.append('g').attr('class','dividers');
+const shiftLayer = svg.append('g').attr('class','shifts');
+const blobLayer  = svg.append('g').attr('class','blobs');
+const linkLayer  = svg.append('g').attr('class','links');
+const annoLayer  = svg.append('g').attr('class','annotations');
+const nodeLayer  = svg.append('g').attr('class','nodes');
+const ghostLine  = svg.append('line').attr('id','link-ghost').attr('marker-end','url(#arrow-ghost)');
+const srcRing    = svg.append('circle').attr('class','link-source-ring').attr('r',13);
 const shiftGhost = svg.append('path').attr('id','shift-ghost')
   .attr('fill','none').attr('stroke','#8250df').attr('stroke-width',5)
   .attr('stroke-dasharray','6 4').attr('opacity',0).attr('pointer-events','none');
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// Axes
-// ═══════════════════════════════════════════════════════════════════════════════
-const AXIS_L=60, AXIS_R_PAD=40, AXIS_TOP=30;
-const axisBot = ()=> H-40;
-const axisRight = ()=> W-AXIS_R_PAD;
-const axisSpan  = ()=> axisRight()-AXIS_L;
-
-function buildAxes() {
-  axisG.selectAll('*').remove();
-  axisG.append('line').attr('class','axis-line').attr('x1',AXIS_L).attr('y1',axisBot()).attr('x2',axisRight()).attr('y2',axisBot());
-  axisG.append('line').attr('class','axis-line').attr('x1',AXIS_L).attr('y1',AXIS_TOP).attr('x2',AXIS_L).attr('y2',axisBot());
-  axisG.append('text').attr('class','axis-label').attr('transform',`translate(18,${H/2}) rotate(-90)`).attr('text-anchor','middle').text('← Invisible · Visible →');
-  axisG.append('text').attr('class','axis-label').attr('x',W/2).attr('y',H-16).attr('text-anchor','middle').text('← Evolution →');
-}
-buildAxes();
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Zone dividers
-// ═══════════════════════════════════════════════════════════════════════════════
-const ZONE_NAMES_DEFAULT = ['Genesis','Custom','Product','Commodity'];
-let zoneNames = [...ZONE_NAMES_DEFAULT];
-let divFracs  = [0.25, 0.50, 0.75];
-let zoneColors = ['#0969da', '#1a7f37', '#9a6700', '#cf222e'];
-let zonePadTop = 80; // px of neutral space above zones
-
-const divX = i => AXIS_L + divFracs[i]*axisSpan();
-const zoneBounds = () => [AXIS_L, divX(0), divX(1), divX(2), axisRight()];
-
-function updateDividers() {
-  const top=AXIS_TOP, bot=axisBot(), bounds=zoneBounds();
-  const zoneTop = top + zonePadTop; // where coloured bands begin
-
-  // ── Neutral above-zone area (no fill, just clean background)
-  divLayer.selectAll('.zone-pad-band').data([0]).join('rect').attr('class','zone-pad-band')
-    .attr('x',AXIS_L).attr('y',top).attr('width',axisSpan()).attr('height',zonePadTop)
-    .attr('fill','#f6f8fa').attr('pointer-events','none');
-
-  // ── Separator line between pad area and zones
-  divLayer.selectAll('.zone-pad-sep').data(zonePadTop>0?[0]:[]).join('line').attr('class','zone-pad-sep')
-    .attr('x1',AXIS_L).attr('x2',axisRight()).attr('y1',zoneTop).attr('y2',zoneTop);
-
-  // ── Coloured zone bands (only below the pad)
-  divLayer.selectAll('.zone-band').data(zoneNames).join('rect').attr('class','zone-band')
-    .attr('x',(d,i)=>bounds[i]).attr('y',zoneTop)
-    .attr('width',(d,i)=>Math.max(0,bounds[i+1]-bounds[i])).attr('height',Math.max(0,bot-zoneTop))
-    .attr('fill',(d,i)=>zoneColors[i]+'14'); // ~8% opacity tint
-
-  // ── Zone name labels (just below the separator)
-  divLayer.selectAll('.zone-label').data(zoneNames).join('text').attr('class','zone-label')
-    .attr('x',(d,i)=>(bounds[i]+bounds[i+1])/2).attr('y',zoneTop+15)
-    .attr('text-anchor','middle').attr('fill',(d,i)=>zoneColors[i]+'99').text(d=>d);
-
-  // ── Divider lines (full height, go through pad area too so columns align everywhere)
-  divLayer.selectAll('.divider-line').data([0,1,2]).join('line').attr('class','divider-line')
-    .attr('x1',i=>divX(i)).attr('x2',i=>divX(i)).attr('y1',top).attr('y2',bot);
-
-  // ── Drag handles at bottom of each divider
-  const HW=10, HH=22;
-  const handles = divLayer.selectAll('.divider-handle').data([0,1,2])
-    .join(enter=>{
-      const g=enter.append('g').attr('class','divider-handle');
-      g.append('rect').attr('x',-HW/2).attr('y',-HH/2).attr('width',HW).attr('height',HH).attr('rx',3);
-      [-4,0,4].forEach(dy=>g.append('line').attr('x1',-3).attr('x2',3).attr('y1',dy).attr('y2',dy));
-      g.call(d3.drag()
-        .on('start',function(){ d3.select(this).classed('dragging',true).raise(); })
-        .on('drag',function(e,i){
-          const lo=i===0?0.04:divFracs[i-1]+0.04, hi=i===2?0.96:divFracs[i+1]-0.04;
-          divFracs[i]=Math.max(lo,Math.min(hi,(e.x-AXIS_L)/axisSpan()));
-          updateDividers();
-        })
-        .on('end',function(){ d3.select(this).classed('dragging',false); })
-      );
-      return g;
-    });
-  handles.attr('transform',i=>`translate(${divX(i)},${bot-HH/2-4})`);
-}
-updateDividers();
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Label & description measurement
-// ═══════════════════════════════════════════════════════════════════════════════
-const labelWidths = {};
-function measureLabel(node) {
-  const t=svg.append('text').attr('class','node-label').text(node.label);
-  labelWidths[node.id]=t.node().getComputedTextLength()||node.label.length*7;
-  t.remove();
-}
-nodes.forEach(measureLabel);
-function getNodeById(id){ return nodes.find(n=>n.id===id); }
-
-// Wrap description text into lines of at most DESC_MAX_W px
-function wrapDesc(text){
-  if(!text||!text.trim()) return [];
-  return text.split('\n').flatMap(line=>{
-    if(!line.trim()) return [''];
-    const words=line.split(' ');
-    const lines=[], tmp=svg.append('text').attr('class','node-desc');
-    let cur='';
-    words.forEach(w=>{
-      const test=cur?cur+' '+w:w;
-      tmp.text(test);
-      if(tmp.node().getComputedTextLength()>DESC_MAX_W&&cur){
-        lines.push(cur); cur=w;
-      } else { cur=test; }
-    });
-    if(cur) lines.push(cur);
-    tmp.remove();
-    return lines;
-  });
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Blob helpers
-// ═══════════════════════════════════════════════════════════════════════════════
-let padding=28, alpha=0.65, samples=16;
-
-function expandNode(node,pad,smpl){
-  const pts=[];
-  const isCluster = node.role === 'cluster';
-  // Effective radius for the ring of sample points
-  const r = (isCluster ? CLUSTER_GAP + CLUSTER_R : NODE_R) + pad;
-  const lw = labelWidths[node.id] || 70;
-
-  // Ring of sample points around node center
-  for(let i=0;i<smpl;i++){
-    const a=2*Math.PI*i/smpl;
-    pts.push([node.x + r*Math.cos(a), node.y + r*Math.sin(a)]);
-  }
-
-  // Label bounding box
-  const lx0 = node.x + (isCluster ? clusterLabelOffsetX : NODE_R + LABEL_OFFSET);
-  const lx1 = lx0 + lw;
-  const ly0 = node.y - LABEL_HEIGHT/2;
-  const descLines = wrapDesc(node.desc||'');
-  const descH = descLines.length*(DESC_LINE_HEIGHT+1);
-  const ly1d = node.y + LABEL_HEIGHT/2 + descH + 4;
-  const p = pad*0.85;
-  [[lx0-p,ly0-p],[lx1+p,ly0-p],[lx1+p,ly1d+p],[lx0-p,ly1d+p],
-   [(lx0+lx1)/2,ly0-p],[(lx0+lx1)/2,ly1d+p],[lx1+p,(ly0+ly1d)/2]].forEach(c=>pts.push(c));
-  return pts;
-}
-function computeBlobPath(grp){
-  const pts=[]; grp.nodeIds.forEach(id=>{const nd=getNodeById(id);if(nd) expandNode(nd,padding,samples).forEach(p=>pts.push(p));});
-  const hull=d3.polygonHull(pts); if(!hull||hull.length<3) return null;
-  return d3.line().x(d=>d[0]).y(d=>d[1]).curve(d3.curveCatmullRomClosed.alpha(alpha))(hull);
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Shift arrow markers
-// ═══════════════════════════════════════════════════════════════════════════════
-function ensureShiftMarker(color){
-  const id=`shift-arrow-${color.replace('#','')}`;
-  if(svg.select(`#${id}`).empty()){
-    svg.select('defs').append('marker')
-      .attr('id',id).attr('viewBox','0 -6 12 12')
-      .attr('refX',2).attr('refY',0)
-      .attr('markerWidth',5).attr('markerHeight',5).attr('orient','auto')
-      .append('path').attr('d','M0,-6L12,0L0,6Z').attr('fill',color);
-  }
-  return `url(#${id})`;
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Render: blobs
-// ═══════════════════════════════════════════════════════════════════════════════
-function groupLabelAutoPos(d) {
-  const pts = d.nodeIds.map(id=>getNodeById(id)).filter(Boolean);
-  if (!pts.length) return {x:0, y:0};
-  return { x: d3.mean(pts,n=>n.x), y: d3.min(pts,n=>n.y) - padding - 10 };
-}
-
-function updateBlobs(){
-  const data=groups.map(g=>({...g,path:computeBlobPath(g)})).filter(g=>g.path);
-  const sel=blobLayer.selectAll('.blob-group').data(data,d=>d.id);
-  const enter=sel.enter().append('g').attr('class','blob-group');
-  enter.append('path').attr('class','group-blob');
-
-  const labelG = enter.append('g').attr('class','group-label-g');
-  // Small pin circle to indicate the label is draggable
-  labelG.append('circle').attr('class','group-label-pin').attr('r',3).attr('cx',0).attr('cy',0);
-  labelG.append('text').attr('class','group-label').attr('text-anchor','middle');
-  // Description text below label
-  labelG.append('text').attr('class','group-desc').attr('text-anchor','middle');
-
-  // Drag to reposition label
-  labelG.call(d3.drag()
-    .on('start', function(e,d){ d3.select(this).raise(); e.sourceEvent.stopPropagation(); })
-    .on('drag',  function(e,d){
-      // Find the real group object and store position
-      const grp = groups.find(g=>g.id===d.id);
-      if (grp) { grp.labelPosX = e.x; grp.labelPosY = e.y; }
-      d3.select(this).attr('transform', `translate(${e.x},${e.y})`);
-    })
-  );
-  // Right-click to reset label to auto position
-  labelG.on('contextmenu', function(e,d){
-    e.preventDefault(); e.stopPropagation();
-    const grp = groups.find(g=>g.id===d.id);
-    if (grp) { grp.labelPosX = null; grp.labelPosY = null; }
-    updateBlobs();
-  });
-
-  const all=enter.merge(sel);
-  all.select('.group-blob')
-    .attr('d',d=>d.path).attr('fill',d=>d.color).attr('stroke',d=>d.color)
-    .style('fill-opacity',0.06).style('stroke-opacity',0.4)
-    .style('stroke-width',1.5).style('stroke-dasharray','4 3');
-
-  // Position label group
-  all.select('.group-label-g').each(function(d){
-    const grp = groups.find(g=>g.id===d.id);
-    const auto = groupLabelAutoPos(d);
-    const lx = (grp && grp.labelPosX != null) ? grp.labelPosX : auto.x;
-    const ly = (grp && grp.labelPosY != null) ? grp.labelPosY : auto.y;
-    d3.select(this).attr('transform', `translate(${lx},${ly})`);
-    // Style the pin differently when pinned vs auto
-    const isPinned = grp && grp.labelPosX != null;
-    d3.select(this).select('.group-label-pin')
-      .style('display', isPinned ? null : 'none')
-      .attr('fill', d.color).attr('stroke', d.color);
-  });
-  all.select('.group-label')
-    .attr('fill',d=>d.color)
-    .text(d=>d.label);
-
-  // Group description — wrapped tspans below the label
-  all.select('.group-desc').each(function(d){
-    const el = d3.select(this);
-    el.selectAll('tspan').remove();
-    const grp = groups.find(g=>g.id===d.id);
-    const descText = grp?.desc || '';
-    if (!descText.trim()) return;
-    // Wrap at ~120px
-    const maxW = 120;
-    const lines = descText.split('\n').flatMap(line => {
-      if (!line.trim()) return [''];
-      const words = line.split(' '), out = [];
-      const tmp = svg.append('text').attr('class','group-desc');
-      let cur = '';
-      words.forEach(w => {
-        const test = cur ? cur+' '+w : w;
-        tmp.text(test);
-        if (tmp.node().getComputedTextLength() > maxW && cur) { out.push(cur); cur = w; }
-        else cur = test;
-      });
-      if (cur) out.push(cur);
-      tmp.remove();
-      return out;
-    });
-    lines.forEach((line, i) => {
-      el.append('tspan').attr('x', 0).attr('dy', i===0 ? 13 : 11).text(line);
-    });
-    el.attr('fill', d.color).style('opacity', 0.65).style('font-size','9px');
-  });
-
-  sel.exit().remove();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Render: links
-// ═══════════════════════════════════════════════════════════════════════════════
-function updateLinks(){
-  const data=links.map((lk,i)=>({...lk,idx:i}));
-  const grp=linkLayer.selectAll('.link-group').data(data,d=>`${d.source}__${d.target}`);
-  const enter=grp.enter().append('g').attr('class','link-group');
-  enter.append('line').attr('class','link-hit')
-    .on('click',(e,d)=>{ e.stopPropagation(); if(mode==='delete'){deleteLink(d.idx);} })
-    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'link',linkIndex:d.idx}); });
-  enter.append('line').attr('class','link').attr('marker-end','url(#arrow)');
-  const all=enter.merge(grp);
-  all.each(function(d){
-    const s=getNodeById(d.source),t=getNodeById(d.target); if(!s||!t) return;
-    d3.select(this).selectAll('line').attr('x1',s.x).attr('y1',s.y).attr('x2',t.x).attr('y2',t.y);
-  });
-  grp.exit().remove();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Render: nodes  (handles both normal and cluster types)
-// ═══════════════════════════════════════════════════════════════════════════════
-const CLUSTER_R   = 4.5; // radius of each small circle
-const CLUSTER_GAP = 6;   // distance from center to each sub-circle center
-// Rotate the trio 45° clockwise from the original triangle
-// Original: top, bottom-left, bottom-right → rotated 45°: right, bottom-left-ish, top-left-ish
-const _CA = [45, 165, 285].map(deg => deg * Math.PI / 180); // 45° rotation applied
-const CLUSTER_OFFSETS = _CA.map(a => [Math.cos(a)*CLUSTER_GAP, Math.sin(a)*CLUSTER_GAP]);
-// Effective x offset for label placement (clear of the cluster spread)
-const clusterLabelOffsetX = CLUSTER_GAP + CLUSTER_R + 7;
-const clusterLabelOffsetY = 4;
-
-function updateNodes(){
-  const sel = nodeLayer.selectAll('.node').data(nodes, d=>d.id);
-
-  const enter = sel.enter().append('g').attr('class','node')
-    .on('click', onNodeClick).on('contextmenu', onNodeContextMenu)
-    .call(d3.drag()
-      .on('start', function(e,d){ if(mode!=='select') return; d3.select(this).raise(); })
-      .on('drag',  function(e,d){
-        if(mode!=='select') return;
-        d.x=e.x; d.y=e.y;
-        d3.select(this).attr('transform',`translate(${d.x},${d.y})`);
-        updateLinks(); updateBlobs(); updateSrcRing();
-      })
-    );
-
-  // Shape container — rebuilt on role change in the update step
-  enter.append('g').attr('class','node-shape');
-  // Label always present
-  enter.append('text').attr('class','node-label').attr('y', clusterLabelOffsetY);
-  enter.append('text').attr('class','node-desc');
-
-  const all = enter.merge(sel);
-  all.attr('transform', d=>`translate(${d.x},${d.y})`);
-
-  // Rebuild shape group based on role
-  all.each(function(d){
-    const shapeG = d3.select(this).select('.node-shape');
-    const isCluster = d.role === 'cluster';
-    const col = roleColor[d.role] || '#8250df';
-    const isSel = d.id === selectedId && selectedType === 'node';
-
-    // Check if shape is already correct type to avoid full rebuild every frame
-    const currentType = shapeG.attr('data-type');
-    const expectedType = isCluster ? 'cluster' : 'node';
-
-    if (currentType !== expectedType) {
-      shapeG.selectAll('*').remove();
-      shapeG.attr('data-type', expectedType);
-
-      if (isCluster) {
-        // Three sub-circles — no backdrop, transparent fill
-        CLUSTER_OFFSETS.forEach(([ox,oy]) => {
-          shapeG.append('circle').attr('class','cluster-circle')
-            .attr('cx', ox).attr('cy', oy).attr('r', CLUSTER_R);
-        });
-        // Invisible hit area
-        shapeG.append('circle').attr('class','cluster-hit')
-          .attr('r', CLUSTER_GAP + CLUSTER_R + 4);
-      } else {
-        shapeG.append('circle').attr('class','node-bg').attr('r', NODE_R + 1);
-        shapeG.append('circle').attr('class','node-circle').attr('r', NODE_R);
-      }
-    }
-
-    // Update colors / selection state
-    if (isCluster) {
-      shapeG.selectAll('.cluster-circle')
-        .attr('fill', col+'33')
-        .attr('stroke', col)
-        .attr('stroke-width', 1.8)
-        .classed('sel', isSel);
-    } else {
-      shapeG.select('.node-circle')
-        .attr('fill', col+'22')
-        .attr('stroke', col)
-        .classed('sel', isSel);
-      shapeG.select('.node-bg').attr('fill','white');
-    }
-
-    // Label x offset depends on role
-    const lx = isCluster ? clusterLabelOffsetX : NODE_R + LABEL_OFFSET;
-    d3.select(this).select('.node-label').attr('x', lx).text(d.label);
-    d3.select(this).select('.node-desc').each(function(){
-      const el = d3.select(this);
-      el.selectAll('tspan').remove();
-      const lines = wrapDesc(d.desc||'');
-      lines.forEach((line,i)=>{
-        el.append('tspan')
-          .attr('x', lx).attr('dy', i===0 ? LABEL_HEIGHT+2 : DESC_LINE_HEIGHT+1)
-          .text(line);
-      });
-    });
-  });
-
-  sel.exit().remove();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Render: shift arrows
-// ═══════════════════════════════════════════════════════════════════════════════
-function shiftPath(s){
-  // Quadratic bezier through control point
-  return `M${s.x1},${s.y1} Q${s.cx},${s.cy} ${s.x2},${s.y2}`;
-}
-function midPoint(s){
-  // Point at t=0.5 on quadratic bezier
-  return {
-    x: 0.25*s.x1+0.5*s.cx+0.25*s.x2,
-    y: 0.25*s.y1+0.5*s.cy+0.25*s.y2,
-  };
-}
-
-function updateShifts(){
-  const sel=shiftLayer.selectAll('.shift-group').data(shifts,d=>d.id);
-  const enter=sel.enter().append('g').attr('class','shift-group');
-
-  // The fat arrow path
-  enter.append('path').attr('class','shift-arrow-path')
-    .on('click',(e,d)=>{
-      e.stopPropagation();
-      if(mode==='delete'){ deleteShift(d.id); return; }
-      selectItem(d.id,'shift');
-    })
-    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'shift',id:d.id}); });
-
-  // Label
-  enter.append('text').attr('class','shift-label');
-
-  // Control point handle (arc bow)
-  enter.append('g').attr('class','shift-ctrl-handle')
-    .call(d3.drag().on('drag',function(e,d){
-      d.cx=e.x; d.cy=e.y; updateShifts();
-    }))
-    .append('circle').attr('r',5);
-
-  // Endpoint handles
-  ['start','end'].forEach(which=>{
-    enter.append('g').attr('class',`shift-handle shift-ep-${which}`)
-      .call(d3.drag().on('drag',function(e,d){
-        if(which==='start'){ d.x1=e.x;d.y1=e.y; } else { d.x2=e.x;d.y2=e.y; }
-        // Reset control point to midpoint when endpoints move
-        d.cx=(d.x1+d.x2)/2; d.cy=(d.y1+d.y2)/2-60;
-        updateShifts(); scheduleAutosave();
-      }))
-      .append('circle').attr('r',5);
-  });
-
-  const all=enter.merge(sel);
-  all.select('.shift-arrow-path')
-    .attr('d',d=>shiftPath(d))
-    .attr('stroke',d=>d.color)
-    .attr('stroke-width',10)
-    .attr('stroke-linecap','round')
-    .attr('opacity',0.55)
-    .attr('marker-end',d=>ensureShiftMarker(d.color));
-
-  all.select('.shift-label').each(function(d){
-    const m=midPoint(d);
-    d3.select(this).attr('x',m.x).attr('y',m.y-14)
-      .attr('text-anchor','middle').attr('fill',d.color).text(d.label||'');
-  });
-
-  all.select('.shift-ctrl-handle circle')
-    .attr('stroke',d=>d.color).attr('r',5)
-    .each(function(d){d3.select(this.parentNode).attr('transform',`translate(${d.cx},${d.cy})`);});
-
-  all.select('.shift-ep-start circle').attr('stroke',d=>d.color)
-    .each(function(d){d3.select(this.parentNode).attr('transform',`translate(${d.x1},${d.y1})`);});
-  all.select('.shift-ep-end circle').attr('stroke',d=>d.color)
-    .each(function(d){d3.select(this.parentNode).attr('transform',`translate(${d.x2},${d.y2})`);});
-
-  sel.exit().remove();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Render: annotations
-// ═══════════════════════════════════════════════════════════════════════════════
-const ANNO_PAD=8, ANNO_LINE_H=17;
-function annoLines(text){ return (text||'New annotation').split('\n'); }
-function annoHeight(a){ return annoLines(a.text).length*ANNO_LINE_H+ANNO_PAD*2; }
-function annoWidth(a){
-  const tmp=svg.append('text').attr('class','annotation-text');
-  const w=Math.max(...annoLines(a.text).map(l=>{ tmp.text(l); return tmp.node().getComputedTextLength(); }),60);
-  tmp.remove();
-  return w+ANNO_PAD*2;
-}
-
-function updateAnnotations(){
-  const sel=annoLayer.selectAll('.annotation-group').data(annotations,d=>d.id);
-  const enter=sel.enter().append('g').attr('class','annotation-group')
-    .on('click',(e,d)=>{ e.stopPropagation(); if(mode==='delete'){deleteAnnotation(d.id);return;} selectItem(d.id,'annotation'); })
-    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'annotation',id:d.id}); })
-    .call(d3.drag()
-      .on('start',function(){ if(mode!=='select')return; d3.select(this).raise(); })
-      .on('drag',function(e,d){ if(mode!=='select')return; d.x=e.x;d.y=e.y; updateAnnotations(); scheduleAutosave(); })
-    );
-  enter.append('rect').attr('class','annotation-bg');
-  enter.append('text').attr('class','annotation-text');
-
-  const all=enter.merge(sel);
-  all.classed('sel',d=>d.id===selectedId&&selectedType==='annotation');
-  all.attr('transform',d=>`translate(${d.x},${d.y})`);
-  all.select('.annotation-bg').each(function(d){
-    const w=annoWidth(d),h=annoHeight(d);
-    d3.select(this).attr('x',0).attr('y',0).attr('width',w).attr('height',h).attr('rx',4);
-  });
-  all.select('.annotation-text').each(function(d){
-    const el=d3.select(this); el.selectAll('tspan').remove();
-    annoLines(d.text).forEach((line,i)=>{
-      el.append('tspan').attr('x',ANNO_PAD).attr('dy',i===0?ANNO_PAD+13:ANNO_LINE_H).text(line);
-    });
-  });
-
-  sel.exit().remove();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// updateSrcRing, redrawAll
-// ═══════════════════════════════════════════════════════════════════════════════
-function updateSrcRing(){
-  if(linkSource){
-    const nd=getNodeById(linkSource);
-    if(nd) srcRing.style('display',null).attr('cx',nd.x).attr('cy',nd.y).attr('stroke',roleColor[nd.role]||'#9a6700');
-  } else { srcRing.style('display','none'); }
-}
-function redrawAll(){
-  updateBlobs(); updateLinks(); updateNodes(); updateDividers();
-  updateShifts(); updateAnnotations();
-  renderGroupsPanel(); updateSelectionPanel();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Selection
-// ═══════════════════════════════════════════════════════════════════════════════
-function selectItem(id, type){
-  selectedId=id; selectedType=type;
-  updateNodes(); updateAnnotations(); updateShifts();
-  updateSelectionPanel();
-}
-function clearSelection(){
-  selectedId=null; selectedType=null;
-  updateNodes(); updateAnnotations(); updateShifts();
-  updateSelectionPanel();
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Node events
-// ═══════════════════════════════════════════════════════════════════════════════
-function onNodeClick(event,d){
-  event.stopPropagation();
-  if(mode==='delete'){ deleteNode(d.id); return; }
-  if(mode==='link'){
-    if(!linkSource){ linkSource=d.id; updateSrcRing(); showToast(`Source: "${d.label}" — click target`,''); }
-    else if(linkSource===d.id){ linkSource=null; updateSrcRing(); ghostLine.classed('active',false); }
-    else {
-      const dup=links.some(l=>(l.source===linkSource&&l.target===d.id)||(l.source===d.id&&l.target===linkSource));
-      if(dup){ showToast('Link already exists','error'); }
-      else { links.push({source:linkSource,target:d.id}); showToast(`Linked "${getNodeById(linkSource)?.label}" → "${d.label}"`, 'success'); updateLinks(); }
-      linkSource=null; updateSrcRing(); ghostLine.classed('active',false);
-    }
-    return;
-  }
-  selectItem(d.id,'node');
-}
-function onNodeContextMenu(event,d){ event.preventDefault();event.stopPropagation();showCtxMenu(event,{type:'node',id:d.id}); }
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Canvas click
-// ═══════════════════════════════════════════════════════════════════════════════
-svgEl.addEventListener('click',e=>{
-  hideCtxMenu();
-  const r=svgEl.getBoundingClientRect();
-  const mx=e.clientX-r.left, my=e.clientY-r.top;
-
-  if(mode==='add'){
-    if(e.target.closest('.node')||e.target.closest('.link-group')) return;
-    _pendingX=mx; _pendingY=my;
-    showNodeOverlay(mx,my);
-    return;
-  }
-  if(mode==='annotate'){
-    if(e.target.closest('.node')||e.target.closest('.annotation-group')) return;
-    const id=genId('anno');
-    annotations.push({id,x:mx,y:my,text:'New annotation'});
-    selectItem(id,'annotation');
-    updateAnnotations();
-    showToast('Annotation added — edit text in panel','success');
-    return;
-  }
-  if(mode==='shift'){
-    if(!_shiftDrawing&&!_shiftPending) return; // wait for dialog
-    return;
-  }
-  // click on empty space → clear selection
-  if(!e.target.closest('.node')&&!e.target.closest('.annotation-group')&&!e.target.closest('.shift-group')) clearSelection();
-});
-
-// Mouse move for link ghost
-svgEl.addEventListener('mousemove',e=>{
-  if(mode==='link'&&linkSource){
-    const nd=getNodeById(linkSource); if(!nd) return;
-    const r=svgEl.getBoundingClientRect();
-    ghostLine.classed('active',true).attr('x1',nd.x).attr('y1',nd.y).attr('x2',e.clientX-r.left).attr('y2',e.clientY-r.top);
-  }
-  if(mode==='shift'&&_shiftDrawing){
-    const r=svgEl.getBoundingClientRect();
-    const mx=e.clientX-r.left, my=e.clientY-r.top;
-    const cx=(_pendingX+mx)/2, cy=(_pendingY+my)/2-50;
-    shiftGhost.attr('opacity',1).attr('d',`M${_pendingX},${_pendingY} Q${cx},${cy} ${mx},${my}`);
-  }
-});
-
-svgEl.addEventListener('mousedown',e=>{
-  if(mode!=='shift'||!_shiftPending) return;
-  e.preventDefault();
-  const r=svgEl.getBoundingClientRect();
-  _pendingX=e.clientX-r.left; _pendingY=e.clientY-r.top;
-  _shiftDrawing=true;
-});
-
-svgEl.addEventListener('mouseup',e=>{
-  if(mode!=='shift'||!_shiftDrawing||!_shiftPending) return;
-  e.preventDefault();
-  _shiftDrawing=false;
-  const r=svgEl.getBoundingClientRect();
-  const x2=e.clientX-r.left, y2=e.clientY-r.top;
-  const dist=Math.hypot(x2-_pendingX,y2-_pendingY);
-  if(dist<20){ shiftGhost.attr('opacity',0); return; }
-  const cx=(_pendingX+x2)/2, cy=(_pendingY+y2)/2-60;
-  const id=genId('shift');
-  shifts.push({id,x1:_pendingX,y1:_pendingY,x2,y2,cx,cy,label:_shiftPending.label,color:_shiftPending.color});
-  _shiftPending=null;
-  shiftGhost.attr('opacity',0);
-  updateShifts();
-  showToast('Shift arrow added','success');
-  setMode('select');
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Mode toolbar
-// ═══════════════════════════════════════════════════════════════════════════════
-function setMode(m){
-  mode=m;
-  if(m!=='link'){ linkSource=null; updateSrcRing(); ghostLine.classed('active',false); }
-  if(m!=='add') hideNodeOverlay();
-  if(m!=='shift'){ _shiftDrawing=false; shiftGhost.attr('opacity',0); }
-  svgEl.className=['add','link','delete','shift','annotate'].includes(m)?`mode-${m}`:'';
-  document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById(`tool-${m}`)?.classList.add('active');
-}
-document.getElementById('tool-select').addEventListener('click',   ()=>setMode('select'));
-document.getElementById('tool-add').addEventListener('click',      ()=>setMode('add'));
-document.getElementById('tool-link').addEventListener('click',     ()=>setMode('link'));
-document.getElementById('tool-shift').addEventListener('click',    ()=>{ setMode('shift'); openShiftDialog(); });
-document.getElementById('tool-annotate').addEventListener('click', ()=>setMode('annotate'));
-document.getElementById('tool-delete').addEventListener('click',   ()=>setMode('delete'));
-
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA') return;
-  if(e.key==='a'||e.key==='A') setMode('add');
-  if(e.key==='l'||e.key==='L') setMode('link');
-  if(e.key==='h'||e.key==='H'){ setMode('shift'); openShiftDialog(); }
-  if(e.key==='n'||e.key==='N') setMode('annotate');
-  if(e.key==='s'||e.key==='S') setMode('select');
-  if(e.key==='Escape'){ setMode('select'); hideNodeOverlay(); hideCtxMenu(); }
-  if((e.key==='Delete'||e.key==='Backspace')&&selectedId){
-    if(selectedType==='node') deleteNode(selectedId);
-    else if(selectedType==='annotation') deleteAnnotation(selectedId);
-    else if(selectedType==='shift') deleteShift(selectedId);
-  }
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Context menu
-// ═══════════════════════════════════════════════════════════════════════════════
-function showCtxMenu(event,target){
-  ctxTarget=target;
-  const isNode=target.type==='node', isLink=target.type==='link';
-  const isAnno=target.type==='annotation', isShift=target.type==='shift';
-  document.getElementById('ctx-rename').style.display     =(isNode||isAnno||isShift)?'':'none';
-  document.getElementById('ctx-node-sep').style.display   =(isNode||isAnno||isShift)?'':'none';
-  document.getElementById('ctx-delete-node').style.display=(isNode||isAnno||isShift)?'':'none';
-  document.getElementById('ctx-delete-link').style.display=isLink?'':'none';
-  let title='Item';
-  if(isNode) title=getNodeById(target.id)?.label||'Node';
-  else if(isLink){ const lk=links[target.linkIndex]; title=lk?`${getNodeById(lk.source)?.label}→${getNodeById(lk.target)?.label}`:'Link'; }
-  else if(isAnno) title='Annotation';
-  else if(isShift) title='Shift Arrow';
-  document.getElementById('ctx-title').textContent=title;
-  const menu=document.getElementById('ctx-menu');
-  menu.style.left=`${Math.min(event.clientX,window.innerWidth-170)}px`;
-  menu.style.top =`${Math.min(event.clientY,window.innerHeight-100)}px`;
-  menu.classList.add('visible');
-}
-function hideCtxMenu(){ document.getElementById('ctx-menu').classList.remove('visible'); }
-document.addEventListener('click',e=>{ if(!e.target.closest('#ctx-menu')) hideCtxMenu(); });
-
-document.getElementById('ctx-rename').addEventListener('click',()=>{
-  hideCtxMenu();
-  if(!ctxTarget) return;
-  if(ctxTarget.type==='node') selectItem(ctxTarget.id,'node');
-  else if(ctxTarget.type==='annotation') selectItem(ctxTarget.id,'annotation');
-  else if(ctxTarget.type==='shift') selectItem(ctxTarget.id,'shift');
-  setMode('select');
-  updateSelectionPanel();
-  setTimeout(()=>(document.getElementById('sel-label')||document.getElementById('sel-shift-label'))?.select?.(),50);
-});
-document.getElementById('ctx-delete-node').addEventListener('click',()=>{
-  hideCtxMenu();
-  if(!ctxTarget) return;
-  if(ctxTarget.type==='node') deleteNode(ctxTarget.id);
-  else if(ctxTarget.type==='annotation') deleteAnnotation(ctxTarget.id);
-  else if(ctxTarget.type==='shift') deleteShift(ctxTarget.id);
-});
-document.getElementById('ctx-delete-link').addEventListener('click',()=>{ hideCtxMenu(); if(ctxTarget?.type==='link') deleteLink(ctxTarget.linkIndex); });
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Delete helpers
-// ═══════════════════════════════════════════════════════════════════════════════
-function deleteNode(id){
-  const nd=getNodeById(id); if(!nd) return;
-  nodes=nodes.filter(n=>n.id!==id);
-  links=links.filter(l=>l.source!==id&&l.target!==id);
-  groups.forEach(g=>{g.nodeIds=g.nodeIds.filter(x=>x!==id);});
-  delete labelWidths[id];
-  if(selectedId===id) clearSelection();
-  if(linkSource===id){linkSource=null;updateSrcRing();}
-  showToast(`Deleted "${nd.label}"`,'');
-  redrawAll();
-}
-function deleteLink(idx){ links.splice(idx,1); updateLinks(); showToast('Link removed',''); }
-function deleteAnnotation(id){ annotations=annotations.filter(a=>a.id!==id); if(selectedId===id) clearSelection(); updateAnnotations(); showToast('Annotation removed',''); }
-function deleteShift(id){ shifts=shifts.filter(s=>s.id!==id); if(selectedId===id) clearSelection(); updateShifts(); showToast('Shift arrow removed',''); }
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Node add overlay
-// ═══════════════════════════════════════════════════════════════════════════════
-function showNodeOverlay(x,y){
-  const ov=document.getElementById('node-input-overlay');
-  ov.style.left=`${Math.min(x+16,W-200)}px`; ov.style.top=`${Math.min(y-10,H-130)}px`;
-  ov.classList.add('visible');
-  document.getElementById('node-name-input').value=''; document.getElementById('node-name-input').focus();
-}
-function hideNodeOverlay(){ document.getElementById('node-input-overlay').classList.remove('visible'); }
-function confirmAddNode(){
-  const label=document.getElementById('node-name-input').value.trim(); if(!label){hideNodeOverlay();return;}
-  const role=document.getElementById('node-role-select').value;
-  const id=genId(); const node={id,label,desc:'',x:_pendingX,y:_pendingY,role};
-  nodes.push(node); measureLabel(node); hideNodeOverlay(); selectItem(id,'node'); redrawAll();
-  showToast(`Added "${label}"`, 'success');
-}
-document.getElementById('overlayConfirm').addEventListener('click',confirmAddNode);
-document.getElementById('overlayCancel').addEventListener('click',hideNodeOverlay);
-document.getElementById('node-name-input').addEventListener('keydown',e=>{ if(e.key==='Enter') confirmAddNode(); if(e.key==='Escape') hideNodeOverlay(); });
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Selection panel
-// ═══════════════════════════════════════════════════════════════════════════════
-function updateSelectionPanel(){
-  const hasSelection=!!selectedId;
-  document.getElementById('no-selection').style.display  =hasSelection?'none':'';
-  document.getElementById('selection-form').style.display=hasSelection?'':'none';
-  if(!hasSelection) return;
-
-  const isNode=selectedType==='node', isAnno=selectedType==='annotation', isShift=selectedType==='shift';
-
-  document.getElementById('sel-label-row').style.display     =(isNode||isAnno)?'':'none';
-  document.getElementById('sel-desc-row').style.display      =isNode?'':'none';
-  document.getElementById('sel-role-row').style.display      =isNode?'':'none';
-  document.getElementById('sel-groups-row').style.display    =isNode?'':'none';
-  document.getElementById('sel-shift-label-row').style.display=isShift?'':'none';
-
-  if(isNode){
-    const nd=getNodeById(selectedId); if(!nd) return;
-    document.getElementById('sel-label').value=nd.label;
-    document.getElementById('sel-desc').value =nd.desc||'';
-    document.getElementById('sel-role').value =nd.role;
-    renderMembership(nd);
-  }
-  if(isAnno){
-    const a=annotations.find(x=>x.id===selectedId); if(!a) return;
-    document.getElementById('sel-label').value=a.text;
-  }
-  if(isShift){
-    const s=shifts.find(x=>x.id===selectedId); if(!s) return;
-    document.getElementById('sel-shift-label').value=s.label||'';
-  }
-}
-function renderMembership(nd){
-  const ml=document.getElementById('membership-list'); ml.innerHTML='';
-  groups.forEach(g=>{
-    const inGroup=g.nodeIds.includes(nd.id);
-    const tag=document.createElement('div');
-    tag.className=`membership-tag${inGroup?' active':''}`;
-    tag.style.color=g.color; tag.style.borderColor=g.color;
-    tag.style.background=inGroup?g.color+'22':'transparent';
-    tag.innerHTML=`<span>${inGroup?'✓':'+'}</span>${g.label}`;
-    tag.addEventListener('click',()=>{
-      if(inGroup) g.nodeIds=g.nodeIds.filter(x=>x!==nd.id); else g.nodeIds.push(nd.id);
-      updateBlobs(); updateSelectionPanel();
-    });
-    ml.appendChild(tag);
-  });
-}
-document.getElementById('sel-label').addEventListener('input',function(){
-  if(!selectedId) return;
-  if(selectedType==='node'){
-    const nd=getNodeById(selectedId); if(!nd) return;
-    nd.label=this.value; measureLabel(nd); updateNodes(); updateBlobs(); renderGroupsPanel();
-  }
-  if(selectedType==='annotation'){
-    const a=annotations.find(x=>x.id===selectedId); if(!a) return;
-    a.text=this.value; updateAnnotations();
-  }
-});
-document.getElementById('sel-desc').addEventListener('input',function(){
-  if(selectedType!=='node') return;
-  const nd=getNodeById(selectedId); if(!nd) return;
-  nd.desc=this.value; updateNodes(); updateBlobs();
-});
-document.getElementById('sel-role').addEventListener('change',function(){
-  if(selectedType!=='node') return;
-  const nd=getNodeById(selectedId); if(!nd) return;
-  nd.role=this.value; updateNodes();
-});
-document.getElementById('sel-shift-label').addEventListener('input',function(){
-  if(selectedType!=='shift') return;
-  const s=shifts.find(x=>x.id===selectedId); if(!s) return;
-  s.label=this.value; updateShifts();
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Groups panel
-// ═══════════════════════════════════════════════════════════════════════════════
-function renderGroupsPanel(){
-  const cont=document.getElementById('groups-list'); cont.innerHTML='';
-  if(!groups.length){ cont.innerHTML='<div style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:var(--text-dim)">No groups yet</div>'; return; }
-  groups.forEach(g=>{
-    const item=document.createElement('div'); item.className='group-item';
-    item.innerHTML=`<div class="group-swatch" style="color:${g.color}"></div><span class="group-name">${g.label}</span><span class="group-count">${g.nodeIds.length}</span><div class="group-actions"><button data-id="${g.id}">✎</button><button class="del" data-id="${g.id}">✕</button></div>`;
-    item.querySelector('button:not(.del)').addEventListener('click',e=>{e.stopPropagation();openGroupDialog(g.id);});
-    item.querySelector('button.del').addEventListener('click',e=>{e.stopPropagation();groups=groups.filter(x=>x.id!==g.id);updateBlobs();renderGroupsPanel();updateSelectionPanel();});
-    cont.appendChild(item);
-  });
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Group dialog
-// ═══════════════════════════════════════════════════════════════════════════════
-function buildSwatches(containerId,colors,current,setter){
-  const el=document.getElementById(containerId); el.innerHTML='';
-  colors.forEach(c=>{
-    const s=document.createElement('div');
-    s.className=`color-swatch${c===current?' selected':''}`;
-    s.style.background=c;
-    s.addEventListener('click',()=>{ setter(c); el.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('selected')); s.classList.add('selected'); });
-    el.appendChild(s);
-  });
-}
-function openGroupDialog(editId=null){
-  editingGroupId=editId;
-  const existing=editId?groups.find(g=>g.id===editId):null;
-  document.getElementById('dialog-title').textContent  =editId?'Edit Group':'New Group';
-  document.getElementById('dialogConfirm').textContent =editId?'Save':'Create';
-  document.getElementById('group-name-input').value    =existing?existing.label:'';
-  document.getElementById('group-desc-input').value    =existing?(existing.desc||''):'';
-  selectedDialogColor=existing?existing.color:GROUP_COLORS[groups.length%GROUP_COLORS.length];
-  buildSwatches('color-swatches',GROUP_COLORS,selectedDialogColor,c=>selectedDialogColor=c);
-  document.getElementById('group-dialog').classList.add('visible');
-  setTimeout(()=>document.getElementById('group-name-input').focus(),50);
-}
-function closeGroupDialog(){ document.getElementById('group-dialog').classList.remove('visible'); editingGroupId=null; }
-document.getElementById('btnNewGroup').addEventListener('click',()=>openGroupDialog(null));
-document.getElementById('dialogCancel').addEventListener('click',closeGroupDialog);
-document.getElementById('group-dialog').addEventListener('click',e=>{ if(e.target===document.getElementById('group-dialog')) closeGroupDialog(); });
-document.getElementById('group-name-input').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('dialogConfirm').click(); if(e.key==='Escape') closeGroupDialog(); });
-document.getElementById('dialogConfirm').addEventListener('click',()=>{
-  const name=document.getElementById('group-name-input').value.trim(); if(!name) return;
-  const desc=document.getElementById('group-desc-input').value.trim();
-  if(editingGroupId){ const g=groups.find(x=>x.id===editingGroupId); if(g){g.label=name.toUpperCase();g.color=selectedDialogColor;g.desc=desc;} }
-  else groups.push({id:genId('g'),label:name.toUpperCase(),desc,color:selectedDialogColor,nodeIds:[],labelPosX:null,labelPosY:null});
-  closeGroupDialog(); updateBlobs(); renderGroupsPanel(); updateSelectionPanel();
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Shift arrow dialog
-// ═══════════════════════════════════════════════════════════════════════════════
-function openShiftDialog(){
-  selectedShiftColor=SHIFT_COLORS[0];
-  buildSwatches('shift-color-swatches',SHIFT_COLORS,selectedShiftColor,c=>selectedShiftColor=c);
-  document.getElementById('shift-label-input').value='';
-  document.getElementById('shift-dialog').classList.add('visible');
-  setTimeout(()=>document.getElementById('shift-label-input').focus(),50);
-}
-function closeShiftDialog(cancel=false){
-  document.getElementById('shift-dialog').classList.remove('visible');
-  if(cancel){ _shiftPending=null; setMode('select'); }
-}
-document.getElementById('shiftDialogCancel').addEventListener('click',()=>closeShiftDialog(true));
-document.getElementById('shift-dialog').addEventListener('click',e=>{ if(e.target===document.getElementById('shift-dialog')) closeShiftDialog(true); });
-document.getElementById('shift-label-input').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('shiftDialogConfirm').click(); if(e.key==='Escape') closeShiftDialog(true); });
-document.getElementById('shiftDialogConfirm').addEventListener('click',()=>{
-  _shiftPending={label:document.getElementById('shift-label-input').value.trim(), color:selectedShiftColor};
-  closeShiftDialog(false);
-  showToast('Click & drag on the map to draw the shift arrow','');
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Blob controls
-// ═══════════════════════════════════════════════════════════════════════════════
-document.getElementById('paddingSlider').addEventListener('input',function(){ padding=+this.value; document.getElementById('paddingVal').textContent=padding; updateBlobs(); scheduleAutosave(); });
-document.getElementById('alphaSlider').addEventListener('input',function()  { alpha=(+this.value)/100; document.getElementById('alphaVal').textContent=alpha.toFixed(2); updateBlobs(); scheduleAutosave(); });
-document.getElementById('samplesSlider').addEventListener('input',function(){ samples=+this.value; document.getElementById('samplesVal').textContent=samples; updateBlobs(); scheduleAutosave(); });
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Canvas controls (top padding + zone colors)
-// ═══════════════════════════════════════════════════════════════════════════════
-// ═══════════════════════════════════════════════════════════════════════════════
-// Canvas controls (size, top padding, zone names/colors)
-// ═══════════════════════════════════════════════════════════════════════════════
-document.getElementById('mapWSlider').addEventListener('input', function() {
-  _userSetSize = true;
-  W = +this.value; document.getElementById('mapWVal').textContent = W;
-  svg.attr('width', W); buildAxes(); updateDividers();
-  scheduleAutosave();
-});
-document.getElementById('mapHSlider').addEventListener('input', function() {
-  _userSetSize = true;
-  H = +this.value; document.getElementById('mapHVal').textContent = H;
-  svg.attr('height', H); buildAxes(); updateDividers();
-  scheduleAutosave();
-});
-document.getElementById('topPadSlider').addEventListener('input', function() {
-  zonePadTop = +this.value;
-  document.getElementById('topPadVal').textContent = zonePadTop;
-  updateDividers(); scheduleAutosave();
-});
-
-function buildZoneColorGrid() {
-  const grid = document.getElementById('zone-color-grid');
-  grid.innerHTML = '';
-  zoneNames.forEach((name, i) => {
-    const item = document.createElement('div');
-    item.className = 'zone-color-item';
-    item.innerHTML = `
-      <input type="color" value="${zoneColors[i]}" data-i="${i}" title="Zone color" />
-      <input type="text" value="${name}" data-i="${i}" placeholder="Zone name" spellcheck="false" />`;
-    item.querySelector('input[type=color]').addEventListener('input', function() {
-      zoneColors[+this.dataset.i] = this.value;
-      updateDividers(); scheduleAutosave();
-    });
-    item.querySelector('input[type=text]').addEventListener('input', function() {
-      zoneNames[+this.dataset.i] = this.value;
-      updateDividers(); scheduleAutosave();
-    });
-    grid.appendChild(item);
-  });
-}
-buildZoneColorGrid();
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Save / Load
-// ═══════════════════════════════════════════════════════════════════════════════
-function serializeMap(){
-  return {
-    version:6, settings:{padding,alpha,samples,divFracs:[...divFracs],zonePadTop,zoneColors:[...zoneColors],zoneNames:[...zoneNames],mapW:W,mapH:H},
-    nodes: nodes.map(({id,label,desc,x,y,role})=>({id,label,desc:desc||'',x:Math.round(x),y:Math.round(y),role})),
-    links: links.map(({source,target})=>({source,target})),
-    groups: groups.map(({id,label,desc,color,nodeIds,labelPosX,labelPosY})=>({id,label,desc:desc||'',color,nodeIds:[...nodeIds],labelPosX:labelPosX??null,labelPosY:labelPosY??null})),
-    shifts: shifts.map(s=>({...s})),
-    annotations: annotations.map(a=>({...a})),
-  };
-}
-function deserializeMap(data){
-  if(!data.version||!data.nodes) throw new Error('Invalid map file');
-  if(data.settings){
-    padding=data.settings.padding??padding; alpha=data.settings.alpha??alpha; samples=data.settings.samples??samples;
-    if(data.settings.divFracs)   divFracs=[...data.settings.divFracs];
-    if(data.settings.zonePadTop!=null) { zonePadTop=data.settings.zonePadTop; document.getElementById('topPadSlider').value=zonePadTop; document.getElementById('topPadVal').textContent=zonePadTop; }
-    if(data.settings.zoneColors) { zoneColors=[...data.settings.zoneColors]; }
-    if(data.settings.zoneNames)  { zoneNames=[...data.settings.zoneNames]; }
-    buildZoneColorGrid();
-    if(data.settings.mapW) { W=data.settings.mapW; _userSetSize=true; }
-    if(data.settings.mapH) { H=data.settings.mapH; _userSetSize=true; }
-    applySvgSize();
-    document.getElementById('paddingSlider').value=padding;
-    document.getElementById('paddingVal').textContent=padding;
-    document.getElementById('alphaSlider').value=Math.round(alpha*100);
-    document.getElementById('alphaVal').textContent=alpha.toFixed(2);
-    document.getElementById('samplesSlider').value=samples;
-    document.getElementById('samplesVal').textContent=samples;
-  }
-  nodes=[...data.nodes.map(n=>({...n,desc:n.desc||''}))];
-  links=[...data.links.map(l=>({...l}))];
-  groups=[...data.groups.map(g=>({...g,desc:g.desc||'',nodeIds:[...g.nodeIds],labelPosX:g.labelPosX??null,labelPosY:g.labelPosY??null}))];
-  shifts=[...(data.shifts||[]).map(s=>({...s}))];
-  annotations=[...(data.annotations||[]).map(a=>({...a}))];
-  Object.keys(labelWidths).forEach(k=>delete labelWidths[k]);
-  nodes.forEach(measureLabel);
-  clearSelection(); linkSource=null;
-  nodeLayer.selectAll('.node').remove();
-  linkLayer.selectAll('.link-group').remove();
-  blobLayer.selectAll('.blob-group').remove();
-  shiftLayer.selectAll('.shift-group').remove();
-  annoLayer.selectAll('.annotation-group').remove();
-  redrawAll();
-}
-document.getElementById('btnSave').addEventListener('click',()=>{
-  const blob=new Blob([JSON.stringify(serializeMap(),null,2)],{type:'application/json'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='wardley-map.json'; a.click(); URL.revokeObjectURL(a.href);
-  showToast('✓ Saved wardley-map.json','success');
-});
-document.getElementById('btnLoad').addEventListener('click',()=>document.getElementById('fileInput').click());
-document.getElementById('fileInput').addEventListener('change',function(){
-  const file=this.files[0]; if(!file) return; this.value='';
-  const reader=new FileReader();
-  reader.onload=e=>{ try{deserializeMap(JSON.parse(e.target.result)); showToast(`✓ Loaded "${file.name}"`, 'success');} catch(err){showToast(`✗ ${err.message}`,'error');} };
-  reader.readAsText(file);
-});
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Toast
-// ═══════════════════════════════════════════════════════════════════════════════
-function showToast(msg,type='success'){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.className=`show ${type}`;
-  clearTimeout(t._t); t._t=setTimeout(()=>{t.className=''},2200);
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Autosave to localStorage
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Autosave via MutationObserver ────────────────────────────────────────────
+// Watches the SVG for any DOM mutations and debounces a save.
+// This is the single, correct place autosave is triggered — no manual call-sites needed.
 const LS_KEY = 'wardley-map-autosave';
 let _autosaveTimer = null;
 
@@ -1631,99 +450,766 @@ function scheduleAutosave() {
       badge.style.opacity = '1';
       clearTimeout(badge._t);
       badge._t = setTimeout(() => { badge.style.opacity = '0'; }, 1800);
-    } catch(e) { /* localStorage quota or unavailable */ }
+    } catch(e) { /* quota / unavailable */ }
   }, 800);
 }
 
-// Trigger autosave after any node drag, add, delete, link, etc.
-// We hook into redrawAll which is called after every mutation.
-const _origRedrawAll = redrawAll;
-function redrawAll() { _origRedrawAll(); scheduleAutosave(); }
+// Pause/resume lets us skip saves during deserializeMap to avoid capturing
+// intermediate states while the map is being rebuilt from JSON.
+let _observerPaused = false;
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// PNG Export
-// ═══════════════════════════════════════════════════════════════════════════════
-document.getElementById('btnExport').addEventListener('click', async () => {
-  showToast('Rendering PNG…', '');
+const _svgObserver = new MutationObserver(() => {
+  if (!_observerPaused) scheduleAutosave();
+});
+_svgObserver.observe(svgEl, { subtree: true, childList: true, attributes: true, characterData: true });
 
-  // 1. Collect all <style> text from the document for inline embedding
-  const styleText = [...document.styleSheets].map(ss => {
-    try { return [...ss.cssRules].map(r => r.cssText).join('\n'); }
-    catch(e) { return ''; }
-  }).join('\n');
+// Also watch the side-panel inputs that change data but don't touch the SVG
+// (zone color/name pickers, blob sliders, canvas size sliders).
+const _panelObserver = new MutationObserver(() => {
+  if (!_observerPaused) scheduleAutosave();
+});
+_panelObserver.observe(document.getElementById('side-panel'), { subtree: true, attributes: true, attributeFilter: ['value'] });
 
-  // 2. Clone the SVG and embed styles + white background
-  const clone = svgEl.cloneNode(true);
-  clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-  clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+// ─── Axes ─────────────────────────────────────────────────────────────────────
+const AXIS_L = 60, AXIS_R_PAD = 40, AXIS_TOP = 30;
+const axisBot   = () => H - 40;
+const axisRight = () => W - AXIS_R_PAD;
+const axisSpan  = () => axisRight() - AXIS_L;
 
-  // Insert white background rect
-  const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-  bg.setAttribute('width', W); bg.setAttribute('height', H); bg.setAttribute('fill', '#ffffff');
-  clone.insertBefore(bg, clone.firstChild);
+function buildAxes() {
+  axisG.selectAll('*').remove();
+  axisG.append('line').attr('class','axis-line').attr('x1',AXIS_L).attr('y1',axisBot()).attr('x2',axisRight()).attr('y2',axisBot());
+  axisG.append('line').attr('class','axis-line').attr('x1',AXIS_L).attr('y1',AXIS_TOP).attr('x2',AXIS_L).attr('y2',axisBot());
+  axisG.append('text').attr('class','axis-label').attr('transform',`translate(18,${H/2}) rotate(-90)`).attr('text-anchor','middle').text('← Invisible · Visible →');
+  axisG.append('text').attr('class','axis-label').attr('x',W/2).attr('y',H-16).attr('text-anchor','middle').text('← Evolution →');
+}
+buildAxes();
 
-  // Embed styles so fonts/colors render correctly
-  const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
-  // Replace CSS vars with their computed values for maximum compatibility
-  const root = getComputedStyle(document.documentElement);
-  const resolvedStyle = styleText.replace(/var\(--[\w-]+\)/g, match => {
-    const name = match.slice(4, -1);
-    return root.getPropertyValue(name).trim() || match;
+// ─── Zone dividers ────────────────────────────────────────────────────────────
+const ZONE_NAMES_DEFAULT = ['Genesis','Custom','Product','Commodity'];
+let zoneNames  = [...ZONE_NAMES_DEFAULT];
+let divFracs   = [0.25, 0.50, 0.75];
+let zoneColors = ['#0969da','#1a7f37','#9a6700','#cf222e'];
+let zonePadTop = 80;
+
+const divX      = i => AXIS_L + divFracs[i] * axisSpan();
+const zoneBounds = () => [AXIS_L, divX(0), divX(1), divX(2), axisRight()];
+
+function updateDividers() {
+  const top = AXIS_TOP, bot = axisBot(), bounds = zoneBounds();
+  const zoneTop = top + zonePadTop;
+
+  divLayer.selectAll('.zone-pad-band').data([0]).join('rect').attr('class','zone-pad-band')
+    .attr('x',AXIS_L).attr('y',top).attr('width',axisSpan()).attr('height',zonePadTop)
+    .attr('fill','#f6f8fa').attr('pointer-events','none');
+
+  divLayer.selectAll('.zone-pad-sep').data(zonePadTop>0?[0]:[]).join('line').attr('class','zone-pad-sep')
+    .attr('x1',AXIS_L).attr('x2',axisRight()).attr('y1',zoneTop).attr('y2',zoneTop);
+
+  divLayer.selectAll('.zone-band').data(zoneNames).join('rect').attr('class','zone-band')
+    .attr('x',(d,i)=>bounds[i]).attr('y',zoneTop)
+    .attr('width',(d,i)=>Math.max(0,bounds[i+1]-bounds[i])).attr('height',Math.max(0,bot-zoneTop))
+    .attr('fill',(d,i)=>zoneColors[i]+'14');
+
+  divLayer.selectAll('.zone-label').data(zoneNames).join('text').attr('class','zone-label')
+    .attr('x',(d,i)=>(bounds[i]+bounds[i+1])/2).attr('y',zoneTop+15)
+    .attr('text-anchor','middle').attr('fill',(d,i)=>zoneColors[i]+'99').text(d=>d);
+
+  divLayer.selectAll('.divider-line').data([0,1,2]).join('line').attr('class','divider-line')
+    .attr('x1',i=>divX(i)).attr('x2',i=>divX(i)).attr('y1',top).attr('y2',bot);
+
+  const HW=10, HH=22;
+  const handles = divLayer.selectAll('.divider-handle').data([0,1,2])
+    .join(enter => {
+      const g = enter.append('g').attr('class','divider-handle');
+      g.append('rect').attr('x',-HW/2).attr('y',-HH/2).attr('width',HW).attr('height',HH).attr('rx',3);
+      [-4,0,4].forEach(dy => g.append('line').attr('x1',-3).attr('x2',3).attr('y1',dy).attr('y2',dy));
+      g.call(d3.drag()
+        .on('start', function() { d3.select(this).classed('dragging',true).raise(); })
+        .on('drag',  function(e,i) {
+          const lo = i===0?0.04:divFracs[i-1]+0.04, hi = i===2?0.96:divFracs[i+1]-0.04;
+          divFracs[i] = Math.max(lo, Math.min(hi, (e.x-AXIS_L)/axisSpan()));
+          updateDividers();
+        })
+        .on('end', function() { d3.select(this).classed('dragging',false); })
+      );
+      return g;
+    });
+  handles.attr('transform', i=>`translate(${divX(i)},${bot-HH/2-4})`);
+}
+updateDividers();
+
+// ─── Label measurement ────────────────────────────────────────────────────────
+const labelWidths = {};
+function measureLabel(node) {
+  const t = svg.append('text').attr('class','node-label').text(node.label);
+  labelWidths[node.id] = t.node().getComputedTextLength() || node.label.length*7;
+  t.remove();
+}
+nodes.forEach(measureLabel);
+function getNodeById(id) { return nodes.find(n=>n.id===id); }
+
+function wrapDesc(text) {
+  if (!text||!text.trim()) return [];
+  return text.split('\n').flatMap(line => {
+    if (!line.trim()) return [''];
+    const words = line.split(' '), lines = [];
+    const tmp = svg.append('text').attr('class','node-desc');
+    let cur = '';
+    words.forEach(w => {
+      const test = cur ? cur+' '+w : w;
+      tmp.text(test);
+      if (tmp.node().getComputedTextLength()>DESC_MAX_W && cur) { lines.push(cur); cur=w; }
+      else cur = test;
+    });
+    if (cur) lines.push(cur);
+    tmp.remove();
+    return lines;
   });
-  styleEl.textContent = resolvedStyle;
-  clone.insertBefore(styleEl, clone.firstChild);
+}
 
-  // 3. Serialize to blob URL
-  const svgStr = new XMLSerializer().serializeToString(clone);
-  const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
+// ─── Blob helpers ─────────────────────────────────────────────────────────────
+let padding=28, alpha=0.65, samples=16;
+const CLUSTER_R=4.5, CLUSTER_GAP=6;
+const _CA = [45,165,285].map(d=>d*Math.PI/180);
+const CLUSTER_OFFSETS = _CA.map(a=>[Math.cos(a)*CLUSTER_GAP, Math.sin(a)*CLUSTER_GAP]);
+const clusterLabelOffsetX = CLUSTER_GAP+CLUSTER_R+7, clusterLabelOffsetY=4;
 
-  // 4. Draw onto canvas at 2× pixel density for crisp output
-  const scale = 2;
-  const canvas = document.createElement('canvas');
-  canvas.width  = W * scale;
-  canvas.height = H * scale;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(scale, scale);
+function expandNode(node, pad, smpl) {
+  const pts = [];
+  const isCluster = node.role==='cluster';
+  const r = (isCluster ? CLUSTER_GAP+CLUSTER_R : NODE_R)+pad;
+  const lw = labelWidths[node.id]||70;
+  for (let i=0;i<smpl;i++) { const a=2*Math.PI*i/smpl; pts.push([node.x+r*Math.cos(a), node.y+r*Math.sin(a)]); }
+  const lx0 = node.x+(isCluster?clusterLabelOffsetX:NODE_R+LABEL_OFFSET);
+  const lx1 = lx0+lw, ly0 = node.y-LABEL_HEIGHT/2;
+  const descLines = wrapDesc(node.desc||'');
+  const descH = descLines.length*(DESC_LINE_HEIGHT+1);
+  const ly1d = node.y+LABEL_HEIGHT/2+descH+4, p=pad*0.85;
+  [[lx0-p,ly0-p],[lx1+p,ly0-p],[lx1+p,ly1d+p],[lx0-p,ly1d+p],
+   [(lx0+lx1)/2,ly0-p],[(lx0+lx1)/2,ly1d+p],[lx1+p,(ly0+ly1d)/2]].forEach(c=>pts.push(c));
+  return pts;
+}
+function computeBlobPath(grp) {
+  const pts=[]; grp.nodeIds.forEach(id=>{ const nd=getNodeById(id); if(nd) expandNode(nd,padding,samples).forEach(p=>pts.push(p)); });
+  const hull=d3.polygonHull(pts); if(!hull||hull.length<3) return null;
+  return d3.line().x(d=>d[0]).y(d=>d[1]).curve(d3.curveCatmullRomClosed.alpha(alpha))(hull);
+}
 
-  const img = new Image();
-  img.onload = () => {
-    ctx.drawImage(img, 0, 0, W, H);
-    URL.revokeObjectURL(url);
-    const a = document.createElement('a');
-    a.download = 'wardley-map.png';
-    a.href = canvas.toDataURL('image/png');
-    a.click();
-    showToast('✓ Exported wardley-map.png', 'success');
-  };
-  img.onerror = () => { URL.revokeObjectURL(url); showToast('✗ Export failed', 'error'); };
-  img.src = url;
-});
+// ─── Shift arrow markers ──────────────────────────────────────────────────────
+function ensureShiftMarker(color) {
+  const id=`shift-arrow-${color.replace('#','')}`;
+  if (svg.select(`#${id}`).empty()) {
+    svg.select('defs').append('marker')
+      .attr('id',id).attr('viewBox','0 -6 12 12').attr('refX',2).attr('refY',0)
+      .attr('markerWidth',5).attr('markerHeight',5).attr('orient','auto')
+      .append('path').attr('d','M0,-6L12,0L0,6Z').attr('fill',color);
+  }
+  return `url(#${id})`;
+}
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// Resize (window)  – only auto-resize if the user hasn't set explicit dimensions
-// ═══════════════════════════════════════════════════════════════════════════════
-let _userSetSize = false;
-window.addEventListener('resize', () => {
-  if (_userSetSize) return; // honour explicit slider values
-  W = mcEl.clientWidth; H = mcEl.clientHeight;
-  applySvgSize();
-  buildAxes(); updateDividers();
-});
+// ─── Render: blobs ────────────────────────────────────────────────────────────
+function groupLabelAutoPos(d) {
+  const pts = d.nodeIds.map(id=>getNodeById(id)).filter(Boolean);
+  if (!pts.length) return {x:0,y:0};
+  return { x:d3.mean(pts,n=>n.x), y:d3.min(pts,n=>n.y)-padding-10 };
+}
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// Init  – restore from localStorage if available, otherwise draw default map
-// ═══════════════════════════════════════════════════════════════════════════════
-(function init() {
-  try {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved) {
-      deserializeMap(JSON.parse(saved));
-      // Don't call redrawAll again – deserializeMap already does it
-      showToast('↩ Restored from autosave', '');
-      return;
+function updateBlobs() {
+  const data = groups.map(g=>({...g,path:computeBlobPath(g)})).filter(g=>g.path);
+  const sel = blobLayer.selectAll('.blob-group').data(data,d=>d.id);
+  const enter = sel.enter().append('g').attr('class','blob-group');
+  enter.append('path').attr('class','group-blob');
+  const labelG = enter.append('g').attr('class','group-label-g');
+  labelG.append('circle').attr('class','group-label-pin').attr('r',3).attr('cx',0).attr('cy',0);
+  labelG.append('text').attr('class','group-label').attr('text-anchor','middle');
+  labelG.append('text').attr('class','group-desc').attr('text-anchor','middle');
+  labelG.call(d3.drag()
+    .on('start', function(e,d){ d3.select(this).raise(); e.sourceEvent.stopPropagation(); })
+    .on('drag',  function(e,d){
+      const grp=groups.find(g=>g.id===d.id);
+      if(grp){ grp.labelPosX=e.x; grp.labelPosY=e.y; }
+      d3.select(this).attr('transform',`translate(${e.x},${e.y})`);
+    })
+  );
+  labelG.on('contextmenu', function(e,d){
+    e.preventDefault(); e.stopPropagation();
+    const grp=groups.find(g=>g.id===d.id);
+    if(grp){ grp.labelPosX=null; grp.labelPosY=null; }
+    updateBlobs();
+  });
+
+  const all = enter.merge(sel);
+  all.select('.group-blob')
+    .attr('d',d=>d.path).attr('fill',d=>d.color).attr('stroke',d=>d.color)
+    .style('fill-opacity',0.06).style('stroke-opacity',0.4)
+    .style('stroke-width',1.5).style('stroke-dasharray','4 3');
+
+  all.select('.group-label-g').each(function(d){
+    const grp=groups.find(g=>g.id===d.id);
+    const auto=groupLabelAutoPos(d);
+    const lx=(grp&&grp.labelPosX!=null)?grp.labelPosX:auto.x;
+    const ly=(grp&&grp.labelPosY!=null)?grp.labelPosY:auto.y;
+    d3.select(this).attr('transform',`translate(${lx},${ly})`);
+    const isPinned=grp&&grp.labelPosX!=null;
+    d3.select(this).select('.group-label-pin').style('display',isPinned?null:'none').attr('fill',d.color).attr('stroke',d.color);
+  });
+  all.select('.group-label').attr('fill',d=>d.color).text(d=>d.label);
+  all.select('.group-desc').each(function(d){
+    const el=d3.select(this); el.selectAll('tspan').remove();
+    const grp=groups.find(g=>g.id===d.id);
+    const descText=grp?.desc||''; if(!descText.trim()) return;
+    const maxW=120, lines=descText.split('\n').flatMap(line=>{
+      if(!line.trim()) return [''];
+      const words=line.split(' '), out=[];
+      const tmp=svg.append('text').attr('class','group-desc');
+      let cur='';
+      words.forEach(w=>{ const test=cur?cur+' '+w:w; tmp.text(test); if(tmp.node().getComputedTextLength()>maxW&&cur){out.push(cur);cur=w;}else cur=test; });
+      if(cur) out.push(cur); tmp.remove(); return out;
+    });
+    lines.forEach((line,i)=>el.append('tspan').attr('x',0).attr('dy',i===0?13:11).text(line));
+    el.attr('fill',d.color).style('opacity',0.65).style('font-size','9px');
+  });
+  sel.exit().remove();
+}
+
+// ─── Render: links ────────────────────────────────────────────────────────────
+function updateLinks() {
+  const data = links.map((lk,i)=>({...lk,idx:i}));
+  const grp = linkLayer.selectAll('.link-group').data(data,d=>`${d.source}__${d.target}`);
+  const enter = grp.enter().append('g').attr('class','link-group');
+  enter.append('line').attr('class','link-hit')
+    .on('click',(e,d)=>{ e.stopPropagation(); if(mode==='delete') deleteLink(d.idx); })
+    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'link',linkIndex:d.idx}); });
+  enter.append('line').attr('class','link').attr('marker-end','url(#arrow)');
+  const all = enter.merge(grp);
+  all.each(function(d){
+    const s=getNodeById(d.source), t=getNodeById(d.target); if(!s||!t) return;
+    d3.select(this).selectAll('line').attr('x1',s.x).attr('y1',s.y).attr('x2',t.x).attr('y2',t.y);
+  });
+  grp.exit().remove();
+}
+
+// ─── Render: nodes ────────────────────────────────────────────────────────────
+function updateNodes() {
+  const sel = nodeLayer.selectAll('.node').data(nodes,d=>d.id);
+  const enter = sel.enter().append('g').attr('class','node')
+    .on('click', onNodeClick).on('contextmenu', onNodeContextMenu)
+    .call(d3.drag()
+      .on('start', function(e,d){ if(mode!=='select') return; d3.select(this).raise(); })
+      .on('drag',  function(e,d){
+        if(mode!=='select') return;
+        d.x=e.x; d.y=e.y;
+        d3.select(this).attr('transform',`translate(${d.x},${d.y})`);
+        updateLinks(); updateBlobs(); updateSrcRing();
+      })
+    );
+  enter.append('g').attr('class','node-shape');
+  enter.append('text').attr('class','node-label').attr('y',clusterLabelOffsetY);
+  enter.append('text').attr('class','node-desc');
+
+  const all = enter.merge(sel);
+  all.attr('transform',d=>`translate(${d.x},${d.y})`);
+
+  all.each(function(d){
+    const shapeG = d3.select(this).select('.node-shape');
+    const isCluster = d.role==='cluster';
+    const col = roleColor[d.role]||'#8250df';
+    const isSel = d.id===selectedId && selectedType==='node';
+    const currentType = shapeG.attr('data-type');
+    const expectedType = isCluster?'cluster':'node';
+
+    if (currentType!==expectedType) {
+      shapeG.selectAll('*').remove();
+      shapeG.attr('data-type',expectedType);
+      if (isCluster) {
+        CLUSTER_OFFSETS.forEach(([ox,oy])=>shapeG.append('circle').attr('class','cluster-circle').attr('cx',ox).attr('cy',oy).attr('r',CLUSTER_R));
+        shapeG.append('circle').attr('class','cluster-hit').attr('r',CLUSTER_GAP+CLUSTER_R+4);
+      } else {
+        shapeG.append('circle').attr('class','node-bg').attr('r',NODE_R+1);
+        shapeG.append('circle').attr('class','node-circle').attr('r',NODE_R);
+      }
     }
-  } catch(e) { /* ignore – fall through to default */ }
+
+    if (isCluster) {
+      shapeG.selectAll('.cluster-circle').attr('fill',col+'33').attr('stroke',col).attr('stroke-width',1.8).classed('sel',isSel);
+    } else {
+      shapeG.select('.node-circle').attr('fill',col+'22').attr('stroke',col).classed('sel',isSel);
+      shapeG.select('.node-bg').attr('fill','white');
+    }
+
+    const lx = isCluster?clusterLabelOffsetX:NODE_R+LABEL_OFFSET;
+    d3.select(this).select('.node-label').attr('x',lx).text(d.label);
+    d3.select(this).select('.node-desc').each(function(){
+      const el=d3.select(this); el.selectAll('tspan').remove();
+      wrapDesc(d.desc||'').forEach((line,i)=>el.append('tspan').attr('x',lx).attr('dy',i===0?LABEL_HEIGHT+2:DESC_LINE_HEIGHT+1).text(line));
+    });
+  });
+  sel.exit().remove();
+}
+
+// ─── Render: shift arrows ─────────────────────────────────────────────────────
+function shiftPath(s) { return `M${s.x1},${s.y1} Q${s.cx},${s.cy} ${s.x2},${s.y2}`; }
+function midPoint(s)  { return { x:0.25*s.x1+0.5*s.cx+0.25*s.x2, y:0.25*s.y1+0.5*s.cy+0.25*s.y2 }; }
+
+function updateShifts() {
+  const sel = shiftLayer.selectAll('.shift-group').data(shifts,d=>d.id);
+  const enter = sel.enter().append('g').attr('class','shift-group');
+  enter.append('path').attr('class','shift-arrow-path')
+    .on('click',(e,d)=>{ e.stopPropagation(); if(mode==='delete'){deleteShift(d.id);return;} selectItem(d.id,'shift'); })
+    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'shift',id:d.id}); });
+  enter.append('text').attr('class','shift-label');
+  enter.append('g').attr('class','shift-ctrl-handle')
+    .call(d3.drag().on('drag',function(e,d){ d.cx=e.x;d.cy=e.y;updateShifts(); }))
+    .append('circle').attr('r',5);
+  ['start','end'].forEach(which=>{
+    enter.append('g').attr('class',`shift-handle shift-ep-${which}`)
+      .call(d3.drag().on('drag',function(e,d){
+        if(which==='start'){d.x1=e.x;d.y1=e.y;}else{d.x2=e.x;d.y2=e.y;}
+        d.cx=(d.x1+d.x2)/2; d.cy=(d.y1+d.y2)/2-60;
+        updateShifts();
+      }))
+      .append('circle').attr('r',5);
+  });
+
+  const all = enter.merge(sel);
+  all.select('.shift-arrow-path').attr('d',d=>shiftPath(d)).attr('stroke',d=>d.color)
+    .attr('stroke-width',10).attr('stroke-linecap','round').attr('opacity',0.55)
+    .attr('marker-end',d=>ensureShiftMarker(d.color));
+  all.select('.shift-label').each(function(d){ const m=midPoint(d); d3.select(this).attr('x',m.x).attr('y',m.y-14).attr('text-anchor','middle').attr('fill',d.color).text(d.label||''); });
+  all.select('.shift-ctrl-handle circle').attr('stroke',d=>d.color).attr('r',5)
+    .each(function(d){ d3.select(this.parentNode).attr('transform',`translate(${d.cx},${d.cy})`); });
+  all.select('.shift-ep-start circle').attr('stroke',d=>d.color)
+    .each(function(d){ d3.select(this.parentNode).attr('transform',`translate(${d.x1},${d.y1})`); });
+  all.select('.shift-ep-end circle').attr('stroke',d=>d.color)
+    .each(function(d){ d3.select(this.parentNode).attr('transform',`translate(${d.x2},${d.y2})`); });
+  sel.exit().remove();
+}
+
+// ─── Render: annotations ─────────────────────────────────────────────────────
+const ANNO_PAD=8, ANNO_LINE_H=17;
+function annoLines(text) { return (text||'New annotation').split('\n'); }
+function annoHeight(a)   { return annoLines(a.text).length*ANNO_LINE_H+ANNO_PAD*2; }
+function annoWidth(a) {
+  const tmp=svg.append('text').attr('class','annotation-text');
+  const w=Math.max(...annoLines(a.text).map(l=>{tmp.text(l);return tmp.node().getComputedTextLength();}),60);
+  tmp.remove(); return w+ANNO_PAD*2;
+}
+
+function updateAnnotations() {
+  const sel = annoLayer.selectAll('.annotation-group').data(annotations,d=>d.id);
+  const enter = sel.enter().append('g').attr('class','annotation-group')
+    .on('click',(e,d)=>{ e.stopPropagation(); if(mode==='delete'){deleteAnnotation(d.id);return;} selectItem(d.id,'annotation'); })
+    .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'annotation',id:d.id}); })
+    .call(d3.drag()
+      .on('start',function(){ if(mode!=='select')return; d3.select(this).raise(); })
+      .on('drag',function(e,d){ if(mode!=='select')return; d.x=e.x;d.y=e.y;updateAnnotations(); })
+    );
+  enter.append('rect').attr('class','annotation-bg');
+  enter.append('text').attr('class','annotation-text');
+
+  const all = enter.merge(sel);
+  all.classed('sel',d=>d.id===selectedId&&selectedType==='annotation');
+  all.attr('transform',d=>`translate(${d.x},${d.y})`);
+  all.select('.annotation-bg').each(function(d){ const w=annoWidth(d),h=annoHeight(d); d3.select(this).attr('x',0).attr('y',0).attr('width',w).attr('height',h).attr('rx',4); });
+  all.select('.annotation-text').each(function(d){
+    const el=d3.select(this); el.selectAll('tspan').remove();
+    annoLines(d.text).forEach((line,i)=>el.append('tspan').attr('x',ANNO_PAD).attr('dy',i===0?ANNO_PAD+13:ANNO_LINE_H).text(line));
+  });
+  sel.exit().remove();
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function updateSrcRing() {
+  if(linkSource){ const nd=getNodeById(linkSource); if(nd) srcRing.style('display',null).attr('cx',nd.x).attr('cy',nd.y).attr('stroke',roleColor[nd.role]||'#9a6700'); }
+  else srcRing.style('display','none');
+}
+function redrawAll() { updateBlobs();updateLinks();updateNodes();updateDividers();updateShifts();updateAnnotations();renderGroupsPanel();updateSelectionPanel(); }
+
+function selectItem(id,type) { selectedId=id;selectedType=type;updateNodes();updateAnnotations();updateShifts();updateSelectionPanel(); }
+function clearSelection()    { selectedId=null;selectedType=null;updateNodes();updateAnnotations();updateShifts();updateSelectionPanel(); }
+
+// ─── Node events ──────────────────────────────────────────────────────────────
+function onNodeClick(event,d) {
+  event.stopPropagation();
+  if(mode==='delete'){ deleteNode(d.id);return; }
+  if(mode==='link'){
+    if(!linkSource){ linkSource=d.id;updateSrcRing();showToast(`Source: "${d.label}" — click target`,''); }
+    else if(linkSource===d.id){ linkSource=null;updateSrcRing();ghostLine.classed('active',false); }
+    else {
+      const dup=links.some(l=>(l.source===linkSource&&l.target===d.id)||(l.source===d.id&&l.target===linkSource));
+      if(dup){ showToast('Link already exists','error'); }
+      else { links.push({source:linkSource,target:d.id});showToast(`Linked "${getNodeById(linkSource)?.label}" → "${d.label}"`, 'success');updateLinks(); }
+      linkSource=null;updateSrcRing();ghostLine.classed('active',false);
+    }
+    return;
+  }
+  selectItem(d.id,'node');
+}
+function onNodeContextMenu(event,d){ event.preventDefault();event.stopPropagation();showCtxMenu(event,{type:'node',id:d.id}); }
+
+// ─── Canvas click / mouse events ─────────────────────────────────────────────
+svgEl.addEventListener('click',e=>{
+  hideCtxMenu();
+  const r=svgEl.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top;
+  if(mode==='add'){
+    if(e.target.closest('.node')||e.target.closest('.link-group')) return;
+    _pendingX=mx;_pendingY=my;showNodeOverlay(mx,my); return;
+  }
+  if(mode==='annotate'){
+    if(e.target.closest('.node')||e.target.closest('.annotation-group')) return;
+    const id=genId('anno'); annotations.push({id,x:mx,y:my,text:'New annotation'});
+    selectItem(id,'annotation');updateAnnotations();showToast('Annotation added — edit text in panel','success'); return;
+  }
+  if(!e.target.closest('.node')&&!e.target.closest('.annotation-group')&&!e.target.closest('.shift-group')) clearSelection();
+});
+
+svgEl.addEventListener('mousemove',e=>{
+  if(mode==='link'&&linkSource){ const nd=getNodeById(linkSource);if(!nd)return;const r=svgEl.getBoundingClientRect();ghostLine.classed('active',true).attr('x1',nd.x).attr('y1',nd.y).attr('x2',e.clientX-r.left).attr('y2',e.clientY-r.top); }
+  if(mode==='shift'&&_shiftDrawing){ const r=svgEl.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,cx=(_pendingX+mx)/2,cy=(_pendingY+my)/2-50;shiftGhost.attr('opacity',1).attr('d',`M${_pendingX},${_pendingY} Q${cx},${cy} ${mx},${my}`); }
+});
+svgEl.addEventListener('mousedown',e=>{ if(mode!=='shift'||!_shiftPending)return;e.preventDefault();const r=svgEl.getBoundingClientRect();_pendingX=e.clientX-r.left;_pendingY=e.clientY-r.top;_shiftDrawing=true; });
+svgEl.addEventListener('mouseup',e=>{
+  if(mode!=='shift'||!_shiftDrawing||!_shiftPending)return;
+  e.preventDefault();_shiftDrawing=false;
+  const r=svgEl.getBoundingClientRect(),x2=e.clientX-r.left,y2=e.clientY-r.top;
+  if(Math.hypot(x2-_pendingX,y2-_pendingY)<20){shiftGhost.attr('opacity',0);return;}
+  const cx=(_pendingX+x2)/2,cy=(_pendingY+y2)/2-60,id=genId('shift');
+  shifts.push({id,x1:_pendingX,y1:_pendingY,x2,y2,cx,cy,label:_shiftPending.label,color:_shiftPending.color});
+  _shiftPending=null;shiftGhost.attr('opacity',0);updateShifts();showToast('Shift arrow added','success');setMode('select');
+});
+
+// ─── Mode toolbar ─────────────────────────────────────────────────────────────
+function setMode(m) {
+  mode=m;
+  if(m!=='link'){linkSource=null;updateSrcRing();ghostLine.classed('active',false);}
+  if(m!=='add') hideNodeOverlay();
+  if(m!=='shift'){_shiftDrawing=false;shiftGhost.attr('opacity',0);}
+  svgEl.className=['add','link','delete','shift','annotate'].includes(m)?`mode-${m}`:'';
+  document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`tool-${m}`)?.classList.add('active');
+}
+document.getElementById('tool-select').addEventListener('click',   ()=>setMode('select'));
+document.getElementById('tool-add').addEventListener('click',      ()=>setMode('add'));
+document.getElementById('tool-link').addEventListener('click',     ()=>setMode('link'));
+document.getElementById('tool-shift').addEventListener('click',    ()=>{ setMode('shift');openShiftDialog(); });
+document.getElementById('tool-annotate').addEventListener('click', ()=>setMode('annotate'));
+document.getElementById('tool-delete').addEventListener('click',   ()=>setMode('delete'));
+
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA') return;
+  if(e.key==='a'||e.key==='A') setMode('add');
+  if(e.key==='l'||e.key==='L') setMode('link');
+  if(e.key==='h'||e.key==='H'){setMode('shift');openShiftDialog();}
+  if(e.key==='n'||e.key==='N') setMode('annotate');
+  if(e.key==='s'||e.key==='S') setMode('select');
+  if(e.key==='Escape'){setMode('select');hideNodeOverlay();hideCtxMenu();}
+  if((e.key==='Delete'||e.key==='Backspace')&&selectedId){
+    if(selectedType==='node') deleteNode(selectedId);
+    else if(selectedType==='annotation') deleteAnnotation(selectedId);
+    else if(selectedType==='shift') deleteShift(selectedId);
+  }
+});
+
+// ─── Context menu ─────────────────────────────────────────────────────────────
+function showCtxMenu(event,target) {
+  ctxTarget=target;
+  const isNode=target.type==='node',isLink=target.type==='link',isAnno=target.type==='annotation',isShift=target.type==='shift';
+  document.getElementById('ctx-rename').style.display     =(isNode||isAnno||isShift)?'':'none';
+  document.getElementById('ctx-node-sep').style.display   =(isNode||isAnno||isShift)?'':'none';
+  document.getElementById('ctx-delete-node').style.display=(isNode||isAnno||isShift)?'':'none';
+  document.getElementById('ctx-delete-link').style.display=isLink?'':'none';
+  let title='Item';
+  if(isNode) title=getNodeById(target.id)?.label||'Node';
+  else if(isLink){ const lk=links[target.linkIndex];title=lk?`${getNodeById(lk.source)?.label}→${getNodeById(lk.target)?.label}`:'Link'; }
+  else if(isAnno) title='Annotation';
+  else if(isShift) title='Shift Arrow';
+  document.getElementById('ctx-title').textContent=title;
+  const menu=document.getElementById('ctx-menu');
+  menu.style.left=`${Math.min(event.clientX,window.innerWidth-170)}px`;
+  menu.style.top =`${Math.min(event.clientY,window.innerHeight-100)}px`;
+  menu.classList.add('visible');
+}
+function hideCtxMenu() { document.getElementById('ctx-menu').classList.remove('visible'); }
+document.addEventListener('click',e=>{ if(!e.target.closest('#ctx-menu')) hideCtxMenu(); });
+
+document.getElementById('ctx-rename').addEventListener('click',()=>{
+  hideCtxMenu();if(!ctxTarget)return;
+  if(ctxTarget.type==='node') selectItem(ctxTarget.id,'node');
+  else if(ctxTarget.type==='annotation') selectItem(ctxTarget.id,'annotation');
+  else if(ctxTarget.type==='shift') selectItem(ctxTarget.id,'shift');
+  setMode('select');updateSelectionPanel();
+  setTimeout(()=>(document.getElementById('sel-label')||document.getElementById('sel-shift-label'))?.select?.(),50);
+});
+document.getElementById('ctx-delete-node').addEventListener('click',()=>{
+  hideCtxMenu();if(!ctxTarget)return;
+  if(ctxTarget.type==='node') deleteNode(ctxTarget.id);
+  else if(ctxTarget.type==='annotation') deleteAnnotation(ctxTarget.id);
+  else if(ctxTarget.type==='shift') deleteShift(ctxTarget.id);
+});
+document.getElementById('ctx-delete-link').addEventListener('click',()=>{ hideCtxMenu();if(ctxTarget?.type==='link') deleteLink(ctxTarget.linkIndex); });
+
+// ─── Delete helpers ───────────────────────────────────────────────────────────
+function deleteNode(id) {
+  const nd=getNodeById(id);if(!nd)return;
+  nodes=nodes.filter(n=>n.id!==id);
+  links=links.filter(l=>l.source!==id&&l.target!==id);
+  groups.forEach(g=>{g.nodeIds=g.nodeIds.filter(x=>x!==id);});
+  delete labelWidths[id];
+  if(selectedId===id) clearSelection();
+  if(linkSource===id){linkSource=null;updateSrcRing();}
+  showToast(`Deleted "${nd.label}"`,'');redrawAll();
+}
+function deleteLink(idx)       { links.splice(idx,1);updateLinks();showToast('Link removed',''); }
+function deleteAnnotation(id)  { annotations=annotations.filter(a=>a.id!==id);if(selectedId===id)clearSelection();updateAnnotations();showToast('Annotation removed',''); }
+function deleteShift(id)       { shifts=shifts.filter(s=>s.id!==id);if(selectedId===id)clearSelection();updateShifts();showToast('Shift arrow removed',''); }
+
+// ─── Node add overlay ─────────────────────────────────────────────────────────
+function showNodeOverlay(x,y) {
+  const ov=document.getElementById('node-input-overlay');
+  ov.style.left=`${Math.min(x+16,W-200)}px`;ov.style.top=`${Math.min(y-10,H-130)}px`;
+  ov.classList.add('visible');
+  document.getElementById('node-name-input').value='';document.getElementById('node-name-input').focus();
+}
+function hideNodeOverlay() { document.getElementById('node-input-overlay').classList.remove('visible'); }
+function confirmAddNode() {
+  const label=document.getElementById('node-name-input').value.trim();if(!label){hideNodeOverlay();return;}
+  const role=document.getElementById('node-role-select').value;
+  const id=genId(),node={id,label,desc:'',x:_pendingX,y:_pendingY,role};
+  nodes.push(node);measureLabel(node);hideNodeOverlay();selectItem(id,'node');redrawAll();
+  showToast(`Added "${label}"`, 'success');
+}
+document.getElementById('overlayConfirm').addEventListener('click',confirmAddNode);
+document.getElementById('overlayCancel').addEventListener('click',hideNodeOverlay);
+document.getElementById('node-name-input').addEventListener('keydown',e=>{ if(e.key==='Enter') confirmAddNode();if(e.key==='Escape') hideNodeOverlay(); });
+
+// ─── Selection panel ──────────────────────────────────────────────────────────
+function updateSelectionPanel() {
+  const hasSelection=!!selectedId;
+  document.getElementById('no-selection').style.display  =hasSelection?'none':'';
+  document.getElementById('selection-form').style.display=hasSelection?'':'none';
+  if(!hasSelection)return;
+  const isNode=selectedType==='node',isAnno=selectedType==='annotation',isShift=selectedType==='shift';
+  document.getElementById('sel-label-row').style.display     =(isNode||isAnno)?'':'none';
+  document.getElementById('sel-desc-row').style.display      =isNode?'':'none';
+  document.getElementById('sel-role-row').style.display      =isNode?'':'none';
+  document.getElementById('sel-groups-row').style.display    =isNode?'':'none';
+  document.getElementById('sel-shift-label-row').style.display=isShift?'':'none';
+  if(isNode){ const nd=getNodeById(selectedId);if(!nd)return;document.getElementById('sel-label').value=nd.label;document.getElementById('sel-desc').value=nd.desc||'';document.getElementById('sel-role').value=nd.role;renderMembership(nd); }
+  if(isAnno){ const a=annotations.find(x=>x.id===selectedId);if(!a)return;document.getElementById('sel-label').value=a.text; }
+  if(isShift){ const s=shifts.find(x=>x.id===selectedId);if(!s)return;document.getElementById('sel-shift-label').value=s.label||''; }
+}
+function renderMembership(nd) {
+  const ml=document.getElementById('membership-list');ml.innerHTML='';
+  groups.forEach(g=>{
+    const inGroup=g.nodeIds.includes(nd.id);
+    const tag=document.createElement('div');tag.className=`membership-tag${inGroup?' active':''}`;
+    tag.style.color=g.color;tag.style.borderColor=g.color;tag.style.background=inGroup?g.color+'22':'transparent';
+    tag.innerHTML=`<span>${inGroup?'✓':'+'}</span>${g.label}`;
+    tag.addEventListener('click',()=>{ if(inGroup)g.nodeIds=g.nodeIds.filter(x=>x!==nd.id);else g.nodeIds.push(nd.id);updateBlobs();updateSelectionPanel(); });
+    ml.appendChild(tag);
+  });
+}
+document.getElementById('sel-label').addEventListener('input',function(){
+  if(!selectedId)return;
+  if(selectedType==='node'){ const nd=getNodeById(selectedId);if(!nd)return;nd.label=this.value;measureLabel(nd);updateNodes();updateBlobs();renderGroupsPanel(); }
+  if(selectedType==='annotation'){ const a=annotations.find(x=>x.id===selectedId);if(!a)return;a.text=this.value;updateAnnotations(); }
+});
+document.getElementById('sel-desc').addEventListener('input',function(){ if(selectedType!=='node')return;const nd=getNodeById(selectedId);if(!nd)return;nd.desc=this.value;updateNodes();updateBlobs(); });
+document.getElementById('sel-role').addEventListener('change',function(){ if(selectedType!=='node')return;const nd=getNodeById(selectedId);if(!nd)return;nd.role=this.value;updateNodes(); });
+document.getElementById('sel-shift-label').addEventListener('input',function(){ if(selectedType!=='shift')return;const s=shifts.find(x=>x.id===selectedId);if(!s)return;s.label=this.value;updateShifts(); });
+
+// ─── Groups panel ─────────────────────────────────────────────────────────────
+function renderGroupsPanel() {
+  const cont=document.getElementById('groups-list');cont.innerHTML='';
+  if(!groups.length){cont.innerHTML='<div style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:var(--text-dim)">No groups yet</div>';return;}
+  groups.forEach(g=>{
+    const item=document.createElement('div');item.className='group-item';
+    item.innerHTML=`<div class="group-swatch" style="color:${g.color}"></div><span class="group-name">${g.label}</span><span class="group-count">${g.nodeIds.length}</span><div class="group-actions"><button data-id="${g.id}">✎</button><button class="del" data-id="${g.id}">✕</button></div>`;
+    item.querySelector('button:not(.del)').addEventListener('click',e=>{e.stopPropagation();openGroupDialog(g.id);});
+    item.querySelector('button.del').addEventListener('click',e=>{e.stopPropagation();groups=groups.filter(x=>x.id!==g.id);updateBlobs();renderGroupsPanel();updateSelectionPanel();});
+    cont.appendChild(item);
+  });
+}
+
+// ─── Group dialog ─────────────────────────────────────────────────────────────
+function buildSwatches(containerId,colors,current,setter) {
+  const el=document.getElementById(containerId);el.innerHTML='';
+  colors.forEach(c=>{
+    const s=document.createElement('div');s.className=`color-swatch${c===current?' selected':''}`;s.style.background=c;
+    s.addEventListener('click',()=>{ setter(c);el.querySelectorAll('.color-swatch').forEach(x=>x.classList.remove('selected'));s.classList.add('selected'); });
+    el.appendChild(s);
+  });
+}
+function openGroupDialog(editId=null) {
+  editingGroupId=editId;
+  const existing=editId?groups.find(g=>g.id===editId):null;
+  document.getElementById('dialog-title').textContent =editId?'Edit Group':'New Group';
+  document.getElementById('dialogConfirm').textContent=editId?'Save':'Create';
+  document.getElementById('group-name-input').value   =existing?existing.label:'';
+  document.getElementById('group-desc-input').value   =existing?(existing.desc||''):'';
+  selectedDialogColor=existing?existing.color:GROUP_COLORS[groups.length%GROUP_COLORS.length];
+  buildSwatches('color-swatches',GROUP_COLORS,selectedDialogColor,c=>selectedDialogColor=c);
+  document.getElementById('group-dialog').classList.add('visible');
+  setTimeout(()=>document.getElementById('group-name-input').focus(),50);
+}
+function closeGroupDialog() { document.getElementById('group-dialog').classList.remove('visible');editingGroupId=null; }
+document.getElementById('btnNewGroup').addEventListener('click',()=>openGroupDialog(null));
+document.getElementById('dialogCancel').addEventListener('click',closeGroupDialog);
+document.getElementById('group-dialog').addEventListener('click',e=>{ if(e.target===document.getElementById('group-dialog')) closeGroupDialog(); });
+document.getElementById('group-name-input').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('dialogConfirm').click();if(e.key==='Escape') closeGroupDialog(); });
+document.getElementById('dialogConfirm').addEventListener('click',()=>{
+  const name=document.getElementById('group-name-input').value.trim();if(!name)return;
+  const desc=document.getElementById('group-desc-input').value.trim();
+  if(editingGroupId){ const g=groups.find(x=>x.id===editingGroupId);if(g){g.label=name.toUpperCase();g.color=selectedDialogColor;g.desc=desc;} }
+  else groups.push({id:genId('g'),label:name.toUpperCase(),desc,color:selectedDialogColor,nodeIds:[],labelPosX:null,labelPosY:null});
+  closeGroupDialog();updateBlobs();renderGroupsPanel();updateSelectionPanel();
+});
+
+// ─── Shift arrow dialog ───────────────────────────────────────────────────────
+function openShiftDialog() {
+  selectedShiftColor=SHIFT_COLORS[0];
+  buildSwatches('shift-color-swatches',SHIFT_COLORS,selectedShiftColor,c=>selectedShiftColor=c);
+  document.getElementById('shift-label-input').value='';
+  document.getElementById('shift-dialog').classList.add('visible');
+  setTimeout(()=>document.getElementById('shift-label-input').focus(),50);
+}
+function closeShiftDialog(cancel=false) {
+  document.getElementById('shift-dialog').classList.remove('visible');
+  if(cancel){_shiftPending=null;setMode('select');}
+}
+document.getElementById('shiftDialogCancel').addEventListener('click',()=>closeShiftDialog(true));
+document.getElementById('shift-dialog').addEventListener('click',e=>{ if(e.target===document.getElementById('shift-dialog')) closeShiftDialog(true); });
+document.getElementById('shift-label-input').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('shiftDialogConfirm').click();if(e.key==='Escape') closeShiftDialog(true); });
+document.getElementById('shiftDialogConfirm').addEventListener('click',()=>{
+  _shiftPending={label:document.getElementById('shift-label-input').value.trim(),color:selectedShiftColor};
+  closeShiftDialog(false);showToast('Click & drag on the map to draw the shift arrow','');
+});
+
+// ─── Blob / canvas controls ───────────────────────────────────────────────────
+document.getElementById('paddingSlider').addEventListener('input',function(){ padding=+this.value;document.getElementById('paddingVal').textContent=padding;updateBlobs(); });
+document.getElementById('alphaSlider').addEventListener('input',function()  { alpha=(+this.value)/100;document.getElementById('alphaVal').textContent=alpha.toFixed(2);updateBlobs(); });
+document.getElementById('samplesSlider').addEventListener('input',function(){ samples=+this.value;document.getElementById('samplesVal').textContent=samples;updateBlobs(); });
+
+document.getElementById('mapWSlider').addEventListener('input',function(){ _userSetSize=true;W=+this.value;document.getElementById('mapWVal').textContent=W;svg.attr('width',W);buildAxes();updateDividers(); });
+document.getElementById('mapHSlider').addEventListener('input',function(){ _userSetSize=true;H=+this.value;document.getElementById('mapHVal').textContent=H;svg.attr('height',H);buildAxes();updateDividers(); });
+document.getElementById('topPadSlider').addEventListener('input',function(){ zonePadTop=+this.value;document.getElementById('topPadVal').textContent=zonePadTop;updateDividers(); });
+
+function buildZoneColorGrid() {
+  const grid=document.getElementById('zone-color-grid');grid.innerHTML='';
+  zoneNames.forEach((name,i)=>{
+    const item=document.createElement('div');item.className='zone-color-item';
+    item.innerHTML=`<input type="color" value="${zoneColors[i]}" data-i="${i}" title="Zone color" /><input type="text" value="${name}" data-i="${i}" placeholder="Zone name" spellcheck="false" />`;
+    // Color changes: update data and SVG, then manually trigger autosave
+    // (color input changes don't mutate SVG attributes, only fill styles)
+    item.querySelector('input[type=color]').addEventListener('input',function(){ zoneColors[+this.dataset.i]=this.value;updateDividers();scheduleAutosave(); });
+    item.querySelector('input[type=text]').addEventListener('input',function(){ zoneNames[+this.dataset.i]=this.value;updateDividers();scheduleAutosave(); });
+    grid.appendChild(item);
+  });
+}
+buildZoneColorGrid();
+
+// ─── Save / Load ──────────────────────────────────────────────────────────────
+function serializeMap() {
+  return {
+    version:6,
+    settings:{padding,alpha,samples,divFracs:[...divFracs],zonePadTop,zoneColors:[...zoneColors],zoneNames:[...zoneNames],mapW:W,mapH:H},
+    nodes:nodes.map(({id,label,desc,x,y,role})=>({id,label,desc:desc||'',x:Math.round(x),y:Math.round(y),role})),
+    links:links.map(({source,target})=>({source,target})),
+    groups:groups.map(({id,label,desc,color,nodeIds,labelPosX,labelPosY})=>({id,label,desc:desc||'',color,nodeIds:[...nodeIds],labelPosX:labelPosX??null,labelPosY:labelPosY??null})),
+    shifts:shifts.map(s=>({...s})),
+    annotations:annotations.map(a=>({...a})),
+  };
+}
+function deserializeMap(data) {
+  if(!data.version||!data.nodes) throw new Error('Invalid map file');
+  // Pause the MutationObserver so intermediate DOM states don't trigger stale saves
+  _observerPaused = true;
+  try {
+    if(data.settings){
+      padding=data.settings.padding??padding;alpha=data.settings.alpha??alpha;samples=data.settings.samples??samples;
+      if(data.settings.divFracs)   divFracs=[...data.settings.divFracs];
+      if(data.settings.zonePadTop!=null){zonePadTop=data.settings.zonePadTop;document.getElementById('topPadSlider').value=zonePadTop;document.getElementById('topPadVal').textContent=zonePadTop;}
+      if(data.settings.zoneColors) zoneColors=[...data.settings.zoneColors];
+      if(data.settings.zoneNames)  zoneNames=[...data.settings.zoneNames];
+      buildZoneColorGrid();
+      if(data.settings.mapW){W=data.settings.mapW;_userSetSize=true;}
+      if(data.settings.mapH){H=data.settings.mapH;_userSetSize=true;}
+      applySvgSize();
+      document.getElementById('paddingSlider').value=padding;document.getElementById('paddingVal').textContent=padding;
+      document.getElementById('alphaSlider').value=Math.round(alpha*100);document.getElementById('alphaVal').textContent=alpha.toFixed(2);
+      document.getElementById('samplesSlider').value=samples;document.getElementById('samplesVal').textContent=samples;
+    }
+    nodes=[...data.nodes.map(n=>({...n,desc:n.desc||''}))];
+    links=[...data.links.map(l=>({...l}))];
+    groups=[...data.groups.map(g=>({...g,desc:g.desc||'',nodeIds:[...g.nodeIds],labelPosX:g.labelPosX??null,labelPosY:g.labelPosY??null}))];
+    shifts=[...(data.shifts||[]).map(s=>({...s}))];
+    annotations=[...(data.annotations||[]).map(a=>({...a}))];
+    Object.keys(labelWidths).forEach(k=>delete labelWidths[k]);
+    nodes.forEach(measureLabel);
+    clearSelection();linkSource=null;
+    nodeLayer.selectAll('.node').remove();
+    linkLayer.selectAll('.link-group').remove();
+    blobLayer.selectAll('.blob-group').remove();
+    shiftLayer.selectAll('.shift-group').remove();
+    annoLayer.selectAll('.annotation-group').remove();
+    redrawAll();
+  } finally {
+    _observerPaused = false;
+  }
+}
+
+document.getElementById('btnSave').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify(serializeMap(),null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='wardley-map.json';a.click();URL.revokeObjectURL(a.href);
+  showToast('✓ Saved wardley-map.json','success');
+});
+document.getElementById('btnLoad').addEventListener('click',()=>document.getElementById('fileInput').click());
+document.getElementById('fileInput').addEventListener('change',function(){
+  const file=this.files[0];if(!file)return;this.value='';
+  const reader=new FileReader();
+  reader.onload=e=>{ try{deserializeMap(JSON.parse(e.target.result));showToast(`✓ Loaded "${file.name}"`, 'success');}catch(err){showToast(`✗ ${err.message}`,'error');} };
+  reader.readAsText(file);
+});
+
+// ─── Toast ────────────────────────────────────────────────────────────────────
+function showToast(msg,type='success') {
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className=`show ${type}`;
+  clearTimeout(t._t);t._t=setTimeout(()=>{t.className=''},2200);
+}
+
+// ─── PNG Export ───────────────────────────────────────────────────────────────
+document.getElementById('btnExport').addEventListener('click',async()=>{
+  showToast('Rendering PNG…','');
+  const styleText=[...document.styleSheets].map(ss=>{try{return[...ss.cssRules].map(r=>r.cssText).join('\n');}catch(e){return '';}}).join('\n');
+  const clone=svgEl.cloneNode(true);
+  clone.setAttribute('xmlns','http://www.w3.org/2000/svg');clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+  const bg=document.createElementNS('http://www.w3.org/2000/svg','rect');bg.setAttribute('width',W);bg.setAttribute('height',H);bg.setAttribute('fill','#ffffff');clone.insertBefore(bg,clone.firstChild);
+  const styleEl=document.createElementNS('http://www.w3.org/2000/svg','style');
+  const root=getComputedStyle(document.documentElement);
+  styleEl.textContent=styleText.replace(/var\(--[\w-]+\)/g,match=>{const name=match.slice(4,-1);return root.getPropertyValue(name).trim()||match;});
+  clone.insertBefore(styleEl,clone.firstChild);
+  const svgStr=new XMLSerializer().serializeToString(clone);
+  const blob=new Blob([svgStr],{type:'image/svg+xml;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const scale=2,canvas=document.createElement('canvas');canvas.width=W*scale;canvas.height=H*scale;
+  const ctx=canvas.getContext('2d');ctx.scale(scale,scale);
+  const img=new Image();
+  img.onload=()=>{ ctx.drawImage(img,0,0,W,H);URL.revokeObjectURL(url);const a=document.createElement('a');a.download='wardley-map.png';a.href=canvas.toDataURL('image/png');a.click();showToast('✓ Exported wardley-map.png','success'); };
+  img.onerror=()=>{URL.revokeObjectURL(url);showToast('✗ Export failed','error');};
+  img.src=url;
+});
+
+// ─── Window resize ────────────────────────────────────────────────────────────
+window.addEventListener('resize',()=>{ if(_userSetSize)return;W=mcEl.clientWidth;H=mcEl.clientHeight;applySvgSize();buildAxes();updateDividers(); });
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+(function init(){
+  try {
+    const saved=localStorage.getItem(LS_KEY);
+    if(saved){ deserializeMap(JSON.parse(saved));showToast('↩ Restored from autosave','');return; }
+  } catch(e){ /* fall through */ }
   redrawAll();
 })();
 </script>
