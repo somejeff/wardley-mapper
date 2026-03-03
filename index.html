@@ -97,8 +97,8 @@
   .tool-btn[data-tip]:hover::after { opacity: 1; }
 
   /* ── Map ── */
-  #map-container { flex: 1; position: relative; overflow: hidden; }
-  svg { width: 100%; height: 100%; cursor: default; }
+  #map-container { flex: 1; position: relative; overflow: auto; background: var(--bg); }
+  svg { cursor: default; display: block; }
   svg.mode-add        { cursor: crosshair; }
   svg.mode-link       { cursor: cell; }
   svg.mode-delete     { cursor: not-allowed; }
@@ -337,13 +337,18 @@
   <h1>Wardley Map</h1>
   <span class="badge">D3 v7</span>
   <div class="header-actions">
+    <span class="badge" id="autosave-badge" style="opacity:0;transition:opacity 0.4s">✓ saved</span>
+    <button class="btn" id="btnExport">
+      <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z"/></svg>
+      Export PNG
+    </button>
     <button class="btn" id="btnSave">
       <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4.5L10.5 1H2zm0 1h8v3h3.5L14 6v8H2V2zm5 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
-      Save
+      Save JSON
     </button>
     <button class="btn" id="btnLoad">
       <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/></svg>
-      Load
+      Load JSON
     </button>
     <input type="file" id="fileInput" accept=".json" style="display:none" />
   </div>
@@ -415,12 +420,22 @@
     <div class="panel-section">
       <div class="panel-title">Canvas</div>
       <div class="control-row">
+        <label>Width</label>
+        <input type="range" id="mapWSlider" min="600" max="2400" step="50" value="1000"/>
+        <span id="mapWVal">1000</span>
+      </div>
+      <div class="control-row">
+        <label>Height</label>
+        <input type="range" id="mapHSlider" min="400" max="1600" step="50" value="700"/>
+        <span id="mapHVal">700</span>
+      </div>
+      <div class="control-row">
         <label>Top Pad</label>
         <input type="range" id="topPadSlider" min="0" max="220" value="80"/>
         <span id="topPadVal">80</span>
       </div>
       <div style="margin-top:8px">
-        <div class="panel-title" style="margin-bottom:4px">Zone Colors</div>
+        <div class="panel-title" style="margin-bottom:4px">Zone Colors &amp; Names</div>
         <div class="zone-color-grid" id="zone-color-grid"></div>
       </div>
     </div>
@@ -560,8 +575,20 @@ let _shiftPending = null; // { label, color } after dialog confirm
 const svgEl  = document.getElementById('map');
 const svg    = d3.select('#map');
 const mcEl   = document.getElementById('map-container');
-let W = mcEl.clientWidth, H = mcEl.clientHeight;
-svg.attr('width', W).attr('height', H);
+
+// Explicit map dimensions (separate from browser window size)
+let W = Math.max(mcEl.clientWidth,  1000);
+let H = Math.max(mcEl.clientHeight, 700);
+
+function applySvgSize() {
+  svg.attr('width', W).attr('height', H);
+  // Sync sliders to actual W/H on first load
+  const ws = document.getElementById('mapWSlider');
+  const hs = document.getElementById('mapHSlider');
+  if (ws) { ws.value = W; document.getElementById('mapWVal').textContent = W; }
+  if (hs) { hs.value = H; document.getElementById('mapHVal').textContent = H; }
+}
+applySvgSize();
 
 const axisG       = svg.append('g').attr('class','axes');
 const divLayer    = svg.append('g').attr('class','dividers');
@@ -1002,7 +1029,7 @@ function updateShifts(){
         if(which==='start'){ d.x1=e.x;d.y1=e.y; } else { d.x2=e.x;d.y2=e.y; }
         // Reset control point to midpoint when endpoints move
         d.cx=(d.x1+d.x2)/2; d.cy=(d.y1+d.y2)/2-60;
-        updateShifts();
+        updateShifts(); scheduleAutosave();
       }))
       .append('circle').attr('r',5);
   });
@@ -1054,7 +1081,7 @@ function updateAnnotations(){
     .on('contextmenu',(e,d)=>{ e.preventDefault();e.stopPropagation();showCtxMenu(e,{type:'annotation',id:d.id}); })
     .call(d3.drag()
       .on('start',function(){ if(mode!=='select')return; d3.select(this).raise(); })
-      .on('drag',function(e,d){ if(mode!=='select')return; d.x=e.x;d.y=e.y; updateAnnotations(); })
+      .on('drag',function(e,d){ if(mode!=='select')return; d.x=e.x;d.y=e.y; updateAnnotations(); scheduleAutosave(); })
     );
   enter.append('rect').attr('class','annotation-bg');
   enter.append('text').attr('class','annotation-text');
@@ -1470,17 +1497,32 @@ document.getElementById('shiftDialogConfirm').addEventListener('click',()=>{
 // ═══════════════════════════════════════════════════════════════════════════════
 // Blob controls
 // ═══════════════════════════════════════════════════════════════════════════════
-document.getElementById('paddingSlider').addEventListener('input',function(){ padding=+this.value; document.getElementById('paddingVal').textContent=padding; updateBlobs(); });
-document.getElementById('alphaSlider').addEventListener('input',function()  { alpha=(+this.value)/100; document.getElementById('alphaVal').textContent=alpha.toFixed(2); updateBlobs(); });
-document.getElementById('samplesSlider').addEventListener('input',function(){ samples=+this.value; document.getElementById('samplesVal').textContent=samples; updateBlobs(); });
+document.getElementById('paddingSlider').addEventListener('input',function(){ padding=+this.value; document.getElementById('paddingVal').textContent=padding; updateBlobs(); scheduleAutosave(); });
+document.getElementById('alphaSlider').addEventListener('input',function()  { alpha=(+this.value)/100; document.getElementById('alphaVal').textContent=alpha.toFixed(2); updateBlobs(); scheduleAutosave(); });
+document.getElementById('samplesSlider').addEventListener('input',function(){ samples=+this.value; document.getElementById('samplesVal').textContent=samples; updateBlobs(); scheduleAutosave(); });
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // Canvas controls (top padding + zone colors)
 // ═══════════════════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════════════════
+// Canvas controls (size, top padding, zone names/colors)
+// ═══════════════════════════════════════════════════════════════════════════════
+document.getElementById('mapWSlider').addEventListener('input', function() {
+  _userSetSize = true;
+  W = +this.value; document.getElementById('mapWVal').textContent = W;
+  svg.attr('width', W); buildAxes(); updateDividers();
+  scheduleAutosave();
+});
+document.getElementById('mapHSlider').addEventListener('input', function() {
+  _userSetSize = true;
+  H = +this.value; document.getElementById('mapHVal').textContent = H;
+  svg.attr('height', H); buildAxes(); updateDividers();
+  scheduleAutosave();
+});
 document.getElementById('topPadSlider').addEventListener('input', function() {
   zonePadTop = +this.value;
   document.getElementById('topPadVal').textContent = zonePadTop;
-  updateDividers();
+  updateDividers(); scheduleAutosave();
 });
 
 function buildZoneColorGrid() {
@@ -1494,11 +1536,11 @@ function buildZoneColorGrid() {
       <input type="text" value="${name}" data-i="${i}" placeholder="Zone name" spellcheck="false" />`;
     item.querySelector('input[type=color]').addEventListener('input', function() {
       zoneColors[+this.dataset.i] = this.value;
-      updateDividers();
+      updateDividers(); scheduleAutosave();
     });
     item.querySelector('input[type=text]').addEventListener('input', function() {
       zoneNames[+this.dataset.i] = this.value;
-      updateDividers();
+      updateDividers(); scheduleAutosave();
     });
     grid.appendChild(item);
   });
@@ -1510,7 +1552,7 @@ buildZoneColorGrid();
 // ═══════════════════════════════════════════════════════════════════════════════
 function serializeMap(){
   return {
-    version:6, settings:{padding,alpha,samples,divFracs:[...divFracs],zonePadTop,zoneColors:[...zoneColors],zoneNames:[...zoneNames]},
+    version:6, settings:{padding,alpha,samples,divFracs:[...divFracs],zonePadTop,zoneColors:[...zoneColors],zoneNames:[...zoneNames],mapW:W,mapH:H},
     nodes: nodes.map(({id,label,desc,x,y,role})=>({id,label,desc:desc||'',x:Math.round(x),y:Math.round(y),role})),
     links: links.map(({source,target})=>({source,target})),
     groups: groups.map(({id,label,desc,color,nodeIds,labelPosX,labelPosY})=>({id,label,desc:desc||'',color,nodeIds:[...nodeIds],labelPosX:labelPosX??null,labelPosY:labelPosY??null})),
@@ -1527,6 +1569,9 @@ function deserializeMap(data){
     if(data.settings.zoneColors) { zoneColors=[...data.settings.zoneColors]; }
     if(data.settings.zoneNames)  { zoneNames=[...data.settings.zoneNames]; }
     buildZoneColorGrid();
+    if(data.settings.mapW) { W=data.settings.mapW; _userSetSize=true; }
+    if(data.settings.mapH) { H=data.settings.mapH; _userSetSize=true; }
+    applySvgSize();
     document.getElementById('paddingSlider').value=padding;
     document.getElementById('paddingVal').textContent=padding;
     document.getElementById('alphaSlider').value=Math.round(alpha*100);
@@ -1572,18 +1617,115 @@ function showToast(msg,type='success'){
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// Resize
+// Autosave to localStorage
 // ═══════════════════════════════════════════════════════════════════════════════
-window.addEventListener('resize',()=>{
-  W=mcEl.clientWidth; H=mcEl.clientHeight;
-  svg.attr('width',W).attr('height',H);
+const LS_KEY = 'wardley-map-autosave';
+let _autosaveTimer = null;
+
+function scheduleAutosave() {
+  clearTimeout(_autosaveTimer);
+  _autosaveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify(serializeMap()));
+      const badge = document.getElementById('autosave-badge');
+      badge.style.opacity = '1';
+      clearTimeout(badge._t);
+      badge._t = setTimeout(() => { badge.style.opacity = '0'; }, 1800);
+    } catch(e) { /* localStorage quota or unavailable */ }
+  }, 800);
+}
+
+// Trigger autosave after any node drag, add, delete, link, etc.
+// We hook into redrawAll which is called after every mutation.
+const _origRedrawAll = redrawAll;
+function redrawAll() { _origRedrawAll(); scheduleAutosave(); }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// PNG Export
+// ═══════════════════════════════════════════════════════════════════════════════
+document.getElementById('btnExport').addEventListener('click', async () => {
+  showToast('Rendering PNG…', '');
+
+  // 1. Collect all <style> text from the document for inline embedding
+  const styleText = [...document.styleSheets].map(ss => {
+    try { return [...ss.cssRules].map(r => r.cssText).join('\n'); }
+    catch(e) { return ''; }
+  }).join('\n');
+
+  // 2. Clone the SVG and embed styles + white background
+  const clone = svgEl.cloneNode(true);
+  clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+
+  // Insert white background rect
+  const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  bg.setAttribute('width', W); bg.setAttribute('height', H); bg.setAttribute('fill', '#ffffff');
+  clone.insertBefore(bg, clone.firstChild);
+
+  // Embed styles so fonts/colors render correctly
+  const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+  // Replace CSS vars with their computed values for maximum compatibility
+  const root = getComputedStyle(document.documentElement);
+  const resolvedStyle = styleText.replace(/var\(--[\w-]+\)/g, match => {
+    const name = match.slice(4, -1);
+    return root.getPropertyValue(name).trim() || match;
+  });
+  styleEl.textContent = resolvedStyle;
+  clone.insertBefore(styleEl, clone.firstChild);
+
+  // 3. Serialize to blob URL
+  const svgStr = new XMLSerializer().serializeToString(clone);
+  const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+
+  // 4. Draw onto canvas at 2× pixel density for crisp output
+  const scale = 2;
+  const canvas = document.createElement('canvas');
+  canvas.width  = W * scale;
+  canvas.height = H * scale;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(scale, scale);
+
+  const img = new Image();
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0, W, H);
+    URL.revokeObjectURL(url);
+    const a = document.createElement('a');
+    a.download = 'wardley-map.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+    showToast('✓ Exported wardley-map.png', 'success');
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); showToast('✗ Export failed', 'error'); };
+  img.src = url;
+});
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Resize (window)  – only auto-resize if the user hasn't set explicit dimensions
+// ═══════════════════════════════════════════════════════════════════════════════
+let _userSetSize = false;
+window.addEventListener('resize', () => {
+  if (_userSetSize) return; // honour explicit slider values
+  W = mcEl.clientWidth; H = mcEl.clientHeight;
+  applySvgSize();
   buildAxes(); updateDividers();
 });
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// Init
+// Init  – restore from localStorage if available, otherwise draw default map
 // ═══════════════════════════════════════════════════════════════════════════════
-redrawAll();
+(function init() {
+  try {
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved) {
+      deserializeMap(JSON.parse(saved));
+      // Don't call redrawAll again – deserializeMap already does it
+      showToast('↩ Restored from autosave', '');
+      return;
+    }
+  } catch(e) { /* ignore – fall through to default */ }
+  redrawAll();
+})();
 </script>
 </body>
 </html>
